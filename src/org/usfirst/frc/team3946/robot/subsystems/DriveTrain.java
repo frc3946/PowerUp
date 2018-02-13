@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -39,7 +40,7 @@ public class DriveTrain extends Subsystem {
 		robotDrive.tankDrive(-speedLeft, -speedRight);
 	}
 	
-	public void arcadeDrive(double forward, double turn) {
+	public void singleJoyArcadeDrive(double forward, double turn) {
 		
 		backLeft.follow(frontLeft);
 		backRight.follow(frontRight);
@@ -50,10 +51,26 @@ public class DriveTrain extends Subsystem {
 		frontLeft.setInverted(true);
 		frontRight.setInverted(false);
 		
-		forward = Robot.m_oi.leftStick.getY();
-    	turn = Robot.m_oi.rightStick.getX();
+		forward = Robot.m_oi.XboxController.getX(GenericHID.Hand.kLeft);
+    	turn = Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft);
+    	
     	
     	robotDrive.arcadeDrive(forward, turn);
+		
+	}
+	
+	public void doubleJoyArcadeDrive(double forward, double turn){
+		
+		backLeft.follow(frontLeft);
+		backRight.follow(frontRight);
+		
+		frontLeft.setInverted(false);
+		frontRight.setInverted(false);
+		
+		forward = -(Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft));
+		turn = Robot.m_oi.XboxController.getX(GenericHID.Hand.kRight);
+		
+		robotDrive.arcadeDrive(forward, turn);
 		
 	}
 	

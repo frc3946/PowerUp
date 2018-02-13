@@ -2,6 +2,7 @@ package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -21,7 +22,7 @@ public class SingleJoyArcade extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(Robot.m_oi.leftStick.getX(), Robot.m_oi.leftStick.getY());
+    	Robot.drivetrain.singleJoyArcadeDrive(Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft), Robot.m_oi.XboxController.getX(GenericHID.Hand.kLeft));
     }
 
     // Make this return true when this Command no longer needs to run execute()
