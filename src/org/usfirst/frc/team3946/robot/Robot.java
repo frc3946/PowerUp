@@ -7,6 +7,10 @@
 
 package org.usfirst.frc.team3946.robot;
 
+import org.usfirst.frc.team3946.robot.commands.JoystickTankDrive;
+import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
+import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
+import org.usfirst.frc.team3946.robot.commands.TankDrive;
 import org.usfirst.frc.team3946.robot.subsystems.DriveTrain;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -64,19 +68,26 @@ public class Robot extends TimedRobot {
 		cameras.addDefault("FrontCam", frontCam);
 		cameras.addObject("Back Camera", backCam);
 		
-		SmartDashboard.putData("Camera Selector", cameras);
+		SmartDashboard.putData("Camera Selector", cameras);		
 		
-//		leftSpeed = drivetrain.frontLeft.getSelectedSensorVelocity(0);
-//		rightSpeed = drivetrain.frontRight.getSelectedSensorVelocity(0);
-//		actualSpeed = (leftSpeed + rightSpeed) / 2;
-		
-//		SmartDashboard.putNumber("Robot Speed", drivetrain.actualSpeed);
-		
-		
+		if (actualSpeed >= 0) {
+			
+			cameras.addDefault("SelectedCam", frontCam);	
+			
+		}
+			else {
+			cameras.addDefault("SelectedCam", backCam);
+		}
 		m_oi = new OI();
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+	
+		SmartDashboard.putData("Joystick Tank Drive", new JoystickTankDrive()); 
+		SmartDashboard.putData("Xbox Tank Drive", new TankDrive());
+		SmartDashboard.putData("One Joystick Arcade Drive", new SingleJoyArcade());
+		SmartDashboard.putData("Two Joystick Arcade Drive", new DoubleJoyArcade());
+		
 	}
 
 	/**
@@ -116,6 +127,8 @@ public class Robot extends TimedRobot {
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
 
+	
+		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
@@ -153,7 +166,9 @@ public class Robot extends TimedRobot {
 	
 		leftSpeed = drivetrain.frontLeft.getSelectedSensorVelocity(0);
 		rightSpeed = drivetrain.frontRight.getSelectedSensorVelocity(0);
-		actualSpeed = (leftSpeed + rightSpeed) / 2;
+		actualSpeed = (leftSpeed + rightSpeed) / 2;		
+
+		SmartDashboard.putNumber("Speed", actualSpeed);
 		
 	}
 
