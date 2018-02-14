@@ -40,7 +40,7 @@ public class DriveTrain extends Subsystem {
 		robotDrive.tankDrive(-speedLeft, -speedRight);
 	}
 	
-	public void singleJoyArcadeDrive(double forward, double turn) {
+	public void singleJoyArcadeDrive(double forward, double turn) { //for the "SingleJoyArcade" command
 		
 		backLeft.follow(frontLeft);
 		backRight.follow(frontRight);
@@ -59,7 +59,7 @@ public class DriveTrain extends Subsystem {
 		
 	}
 	
-	public void doubleJoyArcadeDrive(double forward, double turn){
+	public void doubleJoyArcadeDrive(double forward, double turn){ //for the "DoubleJoyArcade" Command
 		
 		backLeft.follow(frontLeft);
 		backRight.follow(frontRight);
