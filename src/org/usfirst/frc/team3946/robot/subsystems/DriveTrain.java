@@ -51,8 +51,8 @@ public class DriveTrain extends Subsystem {
 		frontLeft.setInverted(true);
 		frontRight.setInverted(false);
 		
-		forward = Robot.m_oi.XboxController.getX(GenericHID.Hand.kLeft);
-    	turn = Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft);
+		forward = -(Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft));
+    	turn = Robot.m_oi.XboxController.getX(GenericHID.Hand.kLeft);
     	
     	
     	robotDrive.arcadeDrive(forward, turn);

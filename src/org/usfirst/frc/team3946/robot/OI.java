@@ -7,6 +7,12 @@
 
 package org.usfirst.frc.team3946.robot;
 
+import org.usfirst.frc.team3946.robot.commands.CubeIn;
+import org.usfirst.frc.team3946.robot.commands.CubeOut;
+import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
+import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
+import org.usfirst.frc.team3946.robot.commands.TankDrive;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -40,6 +46,18 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 
+	Button singleJoyArcade = new JoystickButton(XboxController, 7);
+	Button doubleJoyArcade = new JoystickButton(XboxController, 8);
+	Button normalTank = new JoystickButton(XboxController, 4);
+	Button cubeOut = new JoystickButton(XboxController, 9);
+	Button cubeIn = new JoystickButton(XboxController, 10);
+	
 	public OI() {		
+		singleJoyArcade.whenPressed(new SingleJoyArcade());
+		doubleJoyArcade.whenPressed(new DoubleJoyArcade());
+		normalTank.whenPressed(new TankDrive());
+		cubeOut.whileHeld(new CubeOut());
+		cubeIn.whileHeld(new CubeIn());
+		
 	}
 }

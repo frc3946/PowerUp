@@ -2,16 +2,15 @@ package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DoubleJoyArcade extends Command {
+public class IntakeStop extends Command {
 
-    public DoubleJoyArcade() {
-    	requires(Robot.drivetrain);
+    public IntakeStop() {
+    	requires(Robot.intake);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -22,7 +21,7 @@ public class DoubleJoyArcade extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.doubleJoyArcadeDrive(Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft), Robot.m_oi.XboxController.getX(GenericHID.Hand.kRight));
+    	Robot.intake.setSpeed(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

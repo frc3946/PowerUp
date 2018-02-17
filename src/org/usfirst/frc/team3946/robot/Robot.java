@@ -12,24 +12,16 @@ import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
 import org.usfirst.frc.team3946.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team3946.robot.subsystems.Intake;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.TimedRobot;
-//import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,6 +35,7 @@ public class Robot extends TimedRobot {
 	double actualSpeed, leftSpeed, rightSpeed;
 	
 	public static final DriveTrain drivetrain = new DriveTrain();
+	public static final Intake intake = new Intake();
 	
 	public static OI m_oi; 
 
@@ -57,27 +50,10 @@ public class Robot extends TimedRobot {
 	public void robotInit() {		
 		
 		UsbCamera frontCam = CameraServer.getInstance().startAutomaticCapture(RobotMap.frontCam);
-		UsbCamera backCam = CameraServer.getInstance().startAutomaticCapture(RobotMap.backCam);
 		
 		frontCam.setFPS(60);
 		frontCam.setResolution(640, 640);
-		backCam.setFPS(60);
-		backCam.setResolution(640, 640);
 		
-		SendableChooser<UsbCamera> cameras = new SendableChooser<>();
-		cameras.addDefault("FrontCam", frontCam);
-		cameras.addObject("Back Camera", backCam);
-		
-		SmartDashboard.putData("Camera Selector", cameras);		
-		
-		if (actualSpeed >= 0) {
-			
-			cameras.addDefault("SelectedCam", frontCam);	
-			
-		}
-			else {
-			cameras.addDefault("SelectedCam", backCam);
-		}
 		m_oi = new OI();
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
