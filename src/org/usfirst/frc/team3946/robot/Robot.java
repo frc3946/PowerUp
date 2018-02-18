@@ -11,6 +11,9 @@ import org.usfirst.frc.team3946.robot.commands.JoystickTankDrive;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
+import org.usfirst.frc.team3946.robot.subsystems.Arm;
+import org.usfirst.frc.team3946.robot.subsystems.Claw;
+import org.usfirst.frc.team3946.robot.subsystems.Climb;
 import org.usfirst.frc.team3946.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team3946.robot.subsystems.Intake;
 
@@ -21,6 +24,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 
 /**
@@ -36,6 +40,9 @@ public class Robot extends TimedRobot {
 	
 	public static final DriveTrain drivetrain = new DriveTrain();
 	public static final Intake intake = new Intake();
+	public static final Claw claw = new Claw();
+	public static final Arm arm = new Arm();
+	public static final Climb climb = new Climb();
 	
 	public static OI m_oi; 
 
@@ -63,6 +70,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Xbox Tank Drive", new TankDrive());
 		SmartDashboard.putData("One Joystick Arcade Drive", new SingleJoyArcade());
 		SmartDashboard.putData("Two Joystick Arcade Drive", new DoubleJoyArcade());
+		
+		SmartDashboard.putData(arm);
 		
 	}
 
@@ -139,7 +148,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-	
+		SmartDashboard.putNumber("Potentiometer", arm.potRate());
+		
 		leftSpeed = drivetrain.frontLeft.getSelectedSensorVelocity(0);
 		rightSpeed = drivetrain.frontRight.getSelectedSensorVelocity(0);
 		actualSpeed = (leftSpeed + rightSpeed) / 2;		

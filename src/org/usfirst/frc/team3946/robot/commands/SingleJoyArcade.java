@@ -22,7 +22,7 @@ public class SingleJoyArcade extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.singleJoyArcadeDrive(Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft), Robot.m_oi.XboxController.getX(GenericHID.Hand.kLeft));
+    	Robot.drivetrain.singleJoyArcadeDrive(Robot.m_oi.driverController.getY(GenericHID.Hand.kLeft), Robot.m_oi.driverController.getX(GenericHID.Hand.kLeft));
     }
 
     // Make this return true when this Command no longer needs to run execute()

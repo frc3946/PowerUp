@@ -23,10 +23,8 @@ public class DriveTrain extends Subsystem {
 
 	public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.frontLeftMotor);
 	public static WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.frontRightMotor);
-	public static WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.backLeftMotor);
-	public static WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.backRightMotor);
-//	public static VictorSPX backLeft = new VictorSPX(RobotMap.backLeftMotor);
-//	public static VictorSPX backRight = new VictorSPX(RobotMap.backRightMotor);
+	public static VictorSPX backLeft = new VictorSPX(RobotMap.backLeftMotor);
+	public static VictorSPX backRight = new VictorSPX(RobotMap.backRightMotor);
 	
 	
 	
@@ -51,8 +49,8 @@ public class DriveTrain extends Subsystem {
 		frontLeft.setInverted(true);
 		frontRight.setInverted(false);
 		
-		forward = -(Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft));
-    	turn = Robot.m_oi.XboxController.getX(GenericHID.Hand.kLeft);
+		forward = -(Robot.m_oi.driverController.getY(GenericHID.Hand.kLeft));
+    	turn = Robot.m_oi.driverController.getX(GenericHID.Hand.kLeft);
     	
     	
     	robotDrive.arcadeDrive(forward, turn);
@@ -67,8 +65,8 @@ public class DriveTrain extends Subsystem {
 		frontLeft.setInverted(false);
 		frontRight.setInverted(false);
 		
-		forward = -(Robot.m_oi.XboxController.getY(GenericHID.Hand.kLeft));
-		turn = Robot.m_oi.XboxController.getX(GenericHID.Hand.kRight);
+		forward = -(Robot.m_oi.driverController.getY(GenericHID.Hand.kLeft));
+		turn = Robot.m_oi.driverController.getX(GenericHID.Hand.kRight);
 		
 		robotDrive.arcadeDrive(forward, turn);
 		

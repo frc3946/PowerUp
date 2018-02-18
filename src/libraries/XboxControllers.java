@@ -3,7 +3,7 @@ package libraries;
 import edu.wpi.first.wpilibj.Joystick;
 import static java.lang.Math.abs;
 
-public class XboxController extends Joystick{
+public class XboxControllers extends Joystick{
 
 	 /**
      * Buttons
@@ -22,16 +22,16 @@ public class XboxController extends Joystick{
     /**
      * Axes
      */
-    public static final int LeftX = 0;
-    public static final int LeftY = 1;
-    public static final int LeftTrigger = 2;
-    public static final int RightTrigger = 3;
-    public static final int RightX = 4;
-    public static final int RightY = 5;
+    public static final int LeftX = 1;
+    public static final int LeftY = 2;
+    public static final int LeftTrigger = 3;
+    public static final int RightTrigger = 4;
+    public static final int RightX = 5;
+    public static final int RightY = 6;
 
     double deadband = 0.2;
     
-    public XboxController(int port) {
+    public XboxControllers(int port) {
         super(port);
     }
     
