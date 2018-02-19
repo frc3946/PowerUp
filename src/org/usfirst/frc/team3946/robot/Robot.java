@@ -55,7 +55,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {		
-		
+				
 		UsbCamera frontCam = CameraServer.getInstance().startAutomaticCapture(RobotMap.frontCam);
 		
 		frontCam.setFPS(60);
@@ -70,8 +70,6 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Xbox Tank Drive", new TankDrive());
 		SmartDashboard.putData("One Joystick Arcade Drive", new SingleJoyArcade());
 		SmartDashboard.putData("Two Joystick Arcade Drive", new DoubleJoyArcade());
-		
-		SmartDashboard.putData(arm);
 		
 	}
 
@@ -103,7 +101,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",

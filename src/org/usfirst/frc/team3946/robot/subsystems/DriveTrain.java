@@ -24,13 +24,11 @@ public class DriveTrain extends Subsystem {
 	public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.frontLeftMotor);
 	public static WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.frontRightMotor);
 	public static VictorSPX backLeft = new VictorSPX(RobotMap.backLeftMotor);
-	public static VictorSPX backRight = new VictorSPX(RobotMap.backRightMotor);
-	
-	
+	public static VictorSPX backRight = new VictorSPX(RobotMap.backRightMotor);	
 	
 	DifferentialDrive robotDrive = new DifferentialDrive(frontLeft, frontRight);
 	   
-	public void tankDrive(double speedLeft, double speedRight){
+	public void tankDrive(double speedLeft, double speedRight) {
 			
 		backLeft.follow(frontLeft);
 		backRight.follow(frontRight);

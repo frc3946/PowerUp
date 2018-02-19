@@ -26,43 +26,46 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
+/*
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
 	
+	/*
+	 * Controllers...
+	 */
+	
 	public Joystick leftStick = new Joystick(RobotMap.leftStick);
 	public Joystick rightStick = new Joystick(RobotMap.rightStick);
 	public XboxController manipulatorController = new XboxController(RobotMap.manipulatorController);
 	public XboxController driverController = new XboxController(RobotMap.driverController);
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
-
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenPressed(new ExampleCommand());
-
-	// Run the command while the button is being held down and interrupt it once
-	// the button is released.
-	// button.whileHeld(new ExampleCommand());
-
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenReleased(new ExampleCommand());
-
+	
+	/* 
+	 * Driver's Buttons...
+	 */
+	
 	Button singleJoyArcade = new JoystickButton(driverController, 7);
 	Button doubleJoyArcade = new JoystickButton(driverController, 8);
 	Button normalTank = new JoystickButton(driverController, 4);
+	
+	/*
+	 * Manipulator's Buttons...
+	 */
+	
 	Button cubeIn = new JoystickButton(manipulatorController, 1);
 	Button cubeOut = new JoystickButton(manipulatorController, 2);
 	Button openClaw = new JoystickButton(manipulatorController, 5);
 	Button closeClaw = new JoystickButton(manipulatorController, 6);
-	Button raiseArm = new JoystickButton(manipulatorController, 3);
-	Button lowerArm = new JoystickButton(manipulatorController, 4);
+	Button raiseArm = new JoystickButton(manipulatorController, 9);
+	Button lowerArm = new JoystickButton(manipulatorController, 10);
 	
 	public OI() {		
+		
+		/*
+		 * Commands for Switching Drive and Manipulating the Robot...
+		 */
+		
 		singleJoyArcade.whenPressed(new SingleJoyArcade());
 		doubleJoyArcade.whenPressed(new DoubleJoyArcade());
 		normalTank.whenPressed(new TankDrive());
@@ -72,18 +75,6 @@ public class OI {
 		closeClaw.whileHeld(new Grab());
 		lowerArm.whileHeld(new LowerArm());
 		raiseArm.whileHeld(new RaiseArm());
-	}
-
-	public double getTriggers() {
-		return manipulatorController.getRawAxis(XboxControllers.LeftTrigger) - manipulatorController.getRawAxis(XboxControllers.RightTrigger);
-	}
-
-	public double getLeftXboxX() {
-		return manipulatorController.getRawAxis(0);
-	}
-	
-	public double getRightXboxY() {
-		return manipulatorController.getRawAxis(5);
 	}
 	
 }
