@@ -23,8 +23,10 @@ public class ScalePosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	while(Robot.arm.potRate() < 300) {
-    		Arm.armTalon.set(0.7);
+    	if(Robot.arm.potRate() < 361.5) {
+    		Arm.armTalon.set(0.4);
+    	} else {
+    		end();
     	}
     
     }

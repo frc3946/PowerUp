@@ -30,6 +30,12 @@ public class LED extends Subsystem {
     	green.set(false);
     }
     
+    public void cop() {
+    	red.set(true);
+    	blue.set(false);
+    	green.set(false);
+    }
+    
     public static boolean isBlueTeam() {
     	Alliance team = DriverStation.getInstance().getAlliance();
     	if(team == DriverStation.Alliance.Blue) {

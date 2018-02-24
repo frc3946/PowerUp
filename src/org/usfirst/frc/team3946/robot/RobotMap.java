@@ -65,5 +65,6 @@ public class RobotMap {
 	/*
 	 * Climb
 	 */
-	public static int climbPot = 2;
+	public static int climbPot = 3;
+	public static int climbTalon = 6;
 	}

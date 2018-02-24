@@ -1,17 +1,16 @@
 package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
-import org.usfirst.frc.team3946.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class CubePosition extends Command {
+public class RobotClimb extends Command {
 
-    public CubePosition() {
-    	requires(Robot.arm);
+    public RobotClimb() {
+    	requires(Robot.climb);   	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,11 +20,9 @@ public class CubePosition extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {    	
-    	if(Robot.arm.potRate() < 0) {
-    		Arm.armTalon.set(-0.4);
-    	} else {
-    		end();
+    protected void execute() {
+    	if(Robot.climb.climbRate() < 1000) {
+    		Robot.climb.climbSpeed();
     	}
     }
 
@@ -36,11 +33,12 @@ public class CubePosition extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Arm.armTalon.set(0);
+    	Robot.climb.climbStop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

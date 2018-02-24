@@ -25,7 +25,7 @@ public class Arm extends Subsystem {
 	}
 	
 	public double potRate() {
-		potRates = armPot.pidGet();
+		potRates = armPot.get();
 	
 		return potRates;
 	}

@@ -16,6 +16,7 @@ import org.usfirst.frc.team3946.robot.subsystems.Claw;
 import org.usfirst.frc.team3946.robot.subsystems.Climb;
 import org.usfirst.frc.team3946.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team3946.robot.subsystems.Intake;
+import org.usfirst.frc.team3946.robot.subsystems.LED;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -41,7 +42,7 @@ public class Robot extends TimedRobot {
 	public static final Claw claw = new Claw();
 	public static final Arm arm = new Arm();
 	public static final Climb climb = new Climb();
-//	public static final LED led = new LED();
+	public static final LED led = new LED();
 	
 	public static OI m_oi; 
 

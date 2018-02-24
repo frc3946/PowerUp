@@ -9,10 +9,13 @@ package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.CubeIn;
 import org.usfirst.frc.team3946.robot.commands.CubeOut;
+import org.usfirst.frc.team3946.robot.commands.CubePosition;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.Grab;
 import org.usfirst.frc.team3946.robot.commands.Release;
+import org.usfirst.frc.team3946.robot.commands.ScalePosition;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
+import org.usfirst.frc.team3946.robot.commands.SwitchPosition;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -61,9 +64,9 @@ public class OI {
 		cubeOut.whileHeld(new CubeOut());
 		cubeIn.whileHeld(new CubeIn());	
 		toggleClaw.toggleWhenPressed(new Grab());
-//		cubePosition.whenPressed(new CubePosition());
-//		switchPosition.whenPressed(new SwitchPosition());
-//		scalePosition.whenPressed(new ScalePosition());
+		cubePosition.whileHeld(new CubePosition());
+		switchPosition.whileHeld(new SwitchPosition());
+		scalePosition.whileHeld(new ScalePosition());
 		
 		
 	}
