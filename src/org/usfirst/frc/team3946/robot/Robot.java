@@ -9,6 +9,7 @@ package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.JoystickTankDrive;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
+import org.usfirst.frc.team3946.robot.commands.AutoTravel;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
 import org.usfirst.frc.team3946.robot.subsystems.Arm;
@@ -16,6 +17,7 @@ import org.usfirst.frc.team3946.robot.subsystems.Claw;
 import org.usfirst.frc.team3946.robot.subsystems.Climb;
 import org.usfirst.frc.team3946.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team3946.robot.subsystems.Intake;
+import org.usfirst.frc.team3946.robot.subsystems.LED;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -43,6 +45,7 @@ public class Robot extends TimedRobot {
 	public static final Claw claw = new Claw();
 	public static final Arm arm = new Arm();
 	public static final Climb climb = new Climb();
+	public static final LED led = new LED();
 	
 	public static OI m_oi; 
 
@@ -54,7 +57,9 @@ public class Robot extends TimedRobot {
 	 * used for any initialization code.
 	 */
 	@Override
-	public void robotInit() {		
+	public void robotInit() {	
+		
+		m_autonomousCommand = new AutoTravel();
 		
 		UsbCamera frontCam = CameraServer.getInstance().startAutomaticCapture(RobotMap.frontCam);
 		
@@ -103,7 +108,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand = new AutoTravel();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -126,6 +131,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
+		
 	}
 
 	@Override

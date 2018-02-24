@@ -54,13 +54,16 @@ public class RobotMap {
 	public static int rightStick = 1;
 	public static int manipulatorController = 2;
 	public static int driverController = 3;
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
-}
+	
+	/*
+	 * LEDs
+	 */
+	public static int redLED = 0;
+	public static int greenLED = 1;
+	public static int blueLED = 2;
+	
+	/*
+	 * Climb
+	 */
+	public static int climbPot = 2;
+	}

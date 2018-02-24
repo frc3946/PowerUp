@@ -1,16 +1,16 @@
 package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
+import org.usfirst.frc.team3946.robot.subsystems.Arm;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LowerArm extends Command {
+public class CubePosition extends Command {
 
-    public LowerArm() {
+    public CubePosition() {
     	requires(Robot.arm);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -23,6 +23,10 @@ public class LowerArm extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
+    	while(Robot.arm.potRate() < 10) {
+    		Arm.armTalon.set(0.5);
+    	} 
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,6 +36,7 @@ public class LowerArm extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Arm.armTalon.set(0);
     }
 
     // Called when another command which requires one or more of the same

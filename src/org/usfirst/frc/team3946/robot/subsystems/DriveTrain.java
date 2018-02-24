@@ -30,6 +30,13 @@ public class DriveTrain extends Subsystem {
 	
 	DifferentialDrive robotDrive = new DifferentialDrive(frontLeft, frontRight);
 	   
+	public void autoDrive(double autoLeft, double autoRight) {
+		backLeft.follow(frontLeft);
+		backRight.follow(frontRight);
+		
+		robotDrive.tankDrive(autoLeft, autoRight);
+	}
+	
 	public void tankDrive(double speedLeft, double speedRight){
 			
 		backLeft.follow(frontLeft);
