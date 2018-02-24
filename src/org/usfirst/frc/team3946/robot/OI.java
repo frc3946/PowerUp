@@ -11,20 +11,15 @@ import org.usfirst.frc.team3946.robot.commands.CubeIn;
 import org.usfirst.frc.team3946.robot.commands.CubeOut;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.Grab;
-import org.usfirst.frc.team3946.robot.commands.LowerArm;
-import org.usfirst.frc.team3946.robot.commands.RaiseArm;
 import org.usfirst.frc.team3946.robot.commands.Release;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
-
-import libraries.XboxControllers;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import libraries.XboxControllers;
 
 /*
  * This class is the glue that binds the controls on the physical operator
@@ -40,25 +35,19 @@ public class OI {
 	public Joystick rightStick = new Joystick(RobotMap.rightStick);
 	public XboxController manipulatorController = new XboxController(RobotMap.manipulatorController);
 	public XboxController driverController = new XboxController(RobotMap.driverController);
+
+	Button singleJoyArcade = new JoystickButton(manipulatorController, 7);
+	Button doubleJoyArcade = new JoystickButton(manipulatorController, 8);
+	Button normalTank = new JoystickButton(manipulatorController, 5);
 	
-	/* 
-	 * Driver's Buttons...
-	 */
+	//Buttons on Manipulator's Controller...
 	
-	Button singleJoyArcade = new JoystickButton(driverController, 7);
-	Button doubleJoyArcade = new JoystickButton(driverController, 8);
-	Button normalTank = new JoystickButton(driverController, 4);
-	
-	/*
-	 * Manipulator's Buttons...
-	 */
-	
-	Button cubeIn = new JoystickButton(manipulatorController, 1);
-	Button cubeOut = new JoystickButton(manipulatorController, 2);
-	Button openClaw = new JoystickButton(manipulatorController, 5);
-	Button closeClaw = new JoystickButton(manipulatorController, 6);
-	Button raiseArm = new JoystickButton(manipulatorController, 9);
-	Button lowerArm = new JoystickButton(manipulatorController, 10);
+	Button toggleClaw = new JoystickButton(manipulatorController, 1);
+	Button cubePosition = new JoystickButton(manipulatorController, 2);
+	Button switchPosition = new  JoystickButton(manipulatorController, 3);
+	Button scalePosition = new JoystickButton(manipulatorController, 4);
+	Button cubeIn = new JoystickButton(manipulatorController, 5);
+	Button cubeOut = new JoystickButton(manipulatorController, 6);
 	
 	public OI() {		
 		
@@ -70,11 +59,12 @@ public class OI {
 		doubleJoyArcade.whenPressed(new DoubleJoyArcade());
 		normalTank.whenPressed(new TankDrive());
 		cubeOut.whileHeld(new CubeOut());
-		cubeIn.whileHeld(new CubeIn());
-		openClaw.whileHeld(new Release());
-		closeClaw.whileHeld(new Grab());
-		lowerArm.whileHeld(new LowerArm());
-		raiseArm.whileHeld(new RaiseArm());
+		cubeIn.whileHeld(new CubeIn());	
+		toggleClaw.toggleWhenPressed(new Grab());
+//		cubePosition.whenPressed(new CubePosition());
+//		switchPosition.whenPressed(new SwitchPosition());
+//		scalePosition.whenPressed(new ScalePosition());
+		
+		
 	}
-	
 }

@@ -24,8 +24,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,6 +41,7 @@ public class Robot extends TimedRobot {
 	public static final Claw claw = new Claw();
 	public static final Arm arm = new Arm();
 	public static final Climb climb = new Climb();
+//	public static final LED led = new LED();
 	
 	public static OI m_oi; 
 
@@ -53,8 +52,8 @@ public class Robot extends TimedRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-	@Override
-	public void robotInit() {		
+	@Override				
+	public void robotInit() {	
 				
 		UsbCamera frontCam = CameraServer.getInstance().startAutomaticCapture(RobotMap.frontCam);
 		
@@ -123,6 +122,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
+		
 	}
 
 	@Override
