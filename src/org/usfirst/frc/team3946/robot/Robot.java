@@ -8,6 +8,8 @@
 package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.JoystickTankDrive;
+import org.usfirst.frc.team3946.robot.commands.LeftAutonomous;
+import org.usfirst.frc.team3946.robot.commands.RightAutonomous;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
@@ -20,6 +22,7 @@ import org.usfirst.frc.team3946.robot.subsystems.LED;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -55,7 +58,18 @@ public class Robot extends TimedRobot {
 	 */
 	@Override				
 	public void robotInit() {	
-				
+
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		
+		if(gameData.length() > 0) {
+			if(gameData.charAt(0) == 'L') {
+				m_autonomousCommand = new LeftAutonomous();
+			} else {
+				m_autonomousCommand = new RightAutonomous();
+			}
+		}
+		
 		UsbCamera frontCam = CameraServer.getInstance().startAutomaticCapture(RobotMap.frontCam);
 		
 		frontCam.setFPS(60);
@@ -108,8 +122,6 @@ public class Robot extends TimedRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
-	
 		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -149,8 +161,8 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("Potentiometer", arm.potRate());
 		
-		leftSpeed = drivetrain.frontLeft.getSelectedSensorVelocity(0);
-		rightSpeed = drivetrain.frontRight.getSelectedSensorVelocity(0);
+		leftSpeed = DriveTrain.frontLeft.getSelectedSensorVelocity(0);
+		rightSpeed = DriveTrain.frontRight.getSelectedSensorVelocity(0);
 		actualSpeed = (leftSpeed + rightSpeed) / 2;		
 
 		SmartDashboard.putNumber("Speed", actualSpeed);

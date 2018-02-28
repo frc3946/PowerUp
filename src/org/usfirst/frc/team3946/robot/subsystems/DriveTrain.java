@@ -20,7 +20,10 @@ public class DriveTrain extends Subsystem {
 	
     double leftSpeed, rightSpeed;
 	public double actualSpeed;
-
+	public double leftRate, rightRate;
+	public double ticks = 19.099; // 360 / (wheel diameter * 3.14)
+	public double actualLeftRate, actualRightRate;
+	
 	public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.frontLeftMotor);
 	public static WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.frontRightMotor);
 	public static VictorSPX backLeft = new VictorSPX(RobotMap.backLeftMotor);
@@ -83,6 +86,28 @@ public class DriveTrain extends Subsystem {
     	setDefaultCommand(new TankDrive()); 
    
     } 
-     
+ 
+    public void encoders() {
+    	frontLeft.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+    	frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+    	//not sure what to do after this \_(>_>)_/
+    	frontLeft.setSensorPhase(false);
+    	frontRight.setSensorPhase(false);
+    }
+    
+    public double leftEncRate() {
+    	leftRate = frontLeft.getSelectedSensorPosition(0);    
+    	actualLeftRate = leftRate/ticks;
+    	SmartDashboard.putNumber("Left Encoder", actualLeftRate);
+    	return leftRate;
+    }
+    
+    public double rightEncRate() {
+    	rightRate = frontRight.getSelectedSensorPosition(0);
+    	actualRightRate = rightRate/ticks;
+    	SmartDashboard.putNumber("Right Encoder", actualRightRate);
+    	return rightRate;
+    }
+    
 }
 
