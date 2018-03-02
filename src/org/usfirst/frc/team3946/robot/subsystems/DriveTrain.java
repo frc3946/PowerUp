@@ -105,8 +105,14 @@ public class DriveTrain extends Subsystem {
     public double rightEncRate() {
     	rightRate = frontRight.getSelectedSensorPosition(0);
     	actualRightRate = rightRate/ticks;
-    	SmartDashboard.putNumber("Right Encoder", actualRightRate);
     	return rightRate;
+    }
+    
+    public double getSpeed() {
+    	leftSpeed = DriveTrain.frontLeft.getSelectedSensorVelocity(0);
+		rightSpeed = DriveTrain.frontRight.getSelectedSensorVelocity(0);
+		actualSpeed = (leftSpeed + rightSpeed) / 2;	
+		return actualSpeed;
     }
     
 }

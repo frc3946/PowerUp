@@ -14,8 +14,9 @@ public class RightAutonomous extends CommandGroup {
     	addSequential(new AutoLeftTurn());
     	addSequential(new AutoStraight());
     	addSequential(new AutoLeftTurn());
-    	addSequential(new SwitchPosition());
-    	addSequential(new Release());
+//    	addSequential(new SwitchPosition());
+//    	setTimeout(1);
+//    	addSequential(new Release());
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

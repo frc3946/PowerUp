@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -40,11 +41,12 @@ public class LED extends Subsystem {
     	Alliance team = DriverStation.getInstance().getAlliance();
     	if(team == DriverStation.Alliance.Blue) {
     		return true;
-    	} else {
+    	} 
+    	else {
     		return false;
     	}
     }
-     	
+        
     public static void setTeamColor(boolean turnOn) {
     	if(isBlueTeam()) {
     		red.set(false);
@@ -53,14 +55,6 @@ public class LED extends Subsystem {
     		} else {
     			blue.set(false);
     		}
-    	} else {
-    		blue.set(false);
-    		if(turnOn) {
-    			red.set(true);
-    		} else {
-    			red.set(false);
-    		}
     	}
     }
-   
-}
+}    

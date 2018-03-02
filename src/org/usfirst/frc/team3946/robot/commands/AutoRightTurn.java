@@ -24,10 +24,14 @@ public class AutoRightTurn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     
-    	if(this.went < 50) {
-    		Robot.drivetrain.autoDrive(0.4, 0);	
-    		this.went = Robot.drivetrain.leftEncRate();
-    	}
+    	Robot.drivetrain.autoDrive(0.4, 0);
+    	setTimeout(0.5);
+    	Robot.drivetrain.autoDrive(0, 0);
+    	
+//    	if(this.went < 50) {
+//    		Robot.drivetrain.autoDrive(0.4, 0);	
+//    		this.went = Robot.drivetrain.leftEncRate();
+//    	}
     	
     }
 

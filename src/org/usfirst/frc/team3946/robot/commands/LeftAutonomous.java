@@ -10,13 +10,17 @@ public class LeftAutonomous extends CommandGroup {
     public LeftAutonomous() {
         // Add Commands here:
     	addSequential(new AutoLeftTurn());
-    	addSequential(new AutoStraight());
     	addSequential(new AutoRightTurn());
     	addSequential(new AutoStraight());
-    	addSequential(new AutoRightTurn());
-    	addSequential(new SwitchPosition());
-    	setTimeout(1);
-    	addSequential(new Release());
+    	
+//    	addSequential(new AutoLeftTurn());
+//    	addSequential(new AutoStraight());
+//    	addSequential(new AutoRightTurn());
+//    	addSequential(new AutoStraight());
+//    	addSequential(new AutoRightTurn());
+//    	addSequential(new SwitchPosition());
+//    	setTimeout(1);
+//    	addSequential(new Release());
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

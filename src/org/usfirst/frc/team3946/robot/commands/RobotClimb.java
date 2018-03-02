@@ -21,9 +21,7 @@ public class RobotClimb extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.climb.climbRate() < 1000) {
-    		Robot.climb.climbSpeed();
-    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

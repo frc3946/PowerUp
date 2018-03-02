@@ -1,17 +1,16 @@
 package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
-import org.usfirst.frc.team3946.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ScalePosition extends Command {
+public class Climber extends Command {
 
-    public ScalePosition() {
-    	requires(Robot.arm);
+    public Climber() {
+    	requires(Robot.climb);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -23,22 +22,19 @@ public class ScalePosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(Robot.arm.potRate() < 361.5) {
-    		Arm.armTalon.set(0.4);
-    	} else {
-    		end();
+    	if(Robot.climb.climbRate() < 360) {
+    		Robot.climb.climbSpeed();
     	}
-    
     }
-    
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Arm.armTalon.set(0);
+    	Robot.climb.climbStop();
     }
 
     // Called when another command which requires one or more of the same

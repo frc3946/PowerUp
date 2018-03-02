@@ -37,9 +37,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
-	
-	double actualSpeed, leftSpeed, rightSpeed;
-	
+		
 	public static final DriveTrain drivetrain = new DriveTrain();
 	public static final Intake intake = new Intake();
 	public static final Claw claw = new Claw();
@@ -79,7 +77,6 @@ public class Robot extends TimedRobot {
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
-	
 		SmartDashboard.putData("Joystick Tank Drive", new JoystickTankDrive()); 
 		SmartDashboard.putData("Xbox Tank Drive", new TankDrive());
 		SmartDashboard.putData("One Joystick Arcade Drive", new SingleJoyArcade());
@@ -159,14 +156,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("Potentiometer", arm.potRate());
-		
-		leftSpeed = DriveTrain.frontLeft.getSelectedSensorVelocity(0);
-		rightSpeed = DriveTrain.frontRight.getSelectedSensorVelocity(0);
-		actualSpeed = (leftSpeed + rightSpeed) / 2;		
-
-		SmartDashboard.putNumber("Speed", actualSpeed);
-		
+		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
+		SmartDashboard.getNumber("Climb Encoder Rate", climb.climbRate());
+		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
+		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
+		SmartDashboard.putNumber("Robot Speed", drivetrain.getSpeed());
 	}
 
 	/**
