@@ -13,6 +13,7 @@ import org.usfirst.frc.team3946.robot.commands.CubePosition;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.Grab;
 import org.usfirst.frc.team3946.robot.commands.Release;
+import org.usfirst.frc.team3946.robot.commands.RestPosition;
 import org.usfirst.frc.team3946.robot.commands.ScalePosition;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.SwitchPosition;
@@ -39,18 +40,19 @@ public class OI {
 	public XboxController manipulatorController = new XboxController(RobotMap.manipulatorController);
 	public XboxController driverController = new XboxController(RobotMap.driverController);
 
+	Button normalTank = new JoystickButton(manipulatorController, 4);
 	Button singleJoyArcade = new JoystickButton(manipulatorController, 7);
 	Button doubleJoyArcade = new JoystickButton(manipulatorController, 8);
-	Button normalTank = new JoystickButton(manipulatorController, 5);
 	
 	//Buttons on Manipulator's Controller...
 	
-	Button toggleClaw = new JoystickButton(manipulatorController, 1);
-	Button cubePosition = new JoystickButton(manipulatorController, 2);
+	Button cubePosition = new JoystickButton(manipulatorController, 1);
+	Button restPosition = new JoystickButton(manipulatorController, 2);
 	Button switchPosition = new  JoystickButton(manipulatorController, 3);
 	Button scalePosition = new JoystickButton(manipulatorController, 4);
 	Button cubeIn = new JoystickButton(manipulatorController, 5);
 	Button cubeOut = new JoystickButton(manipulatorController, 6);
+	Button toggleClaw = new JoystickButton(manipulatorController, 7);
 	
 	public OI() {		
 		
@@ -67,7 +69,7 @@ public class OI {
 		cubePosition.whileHeld(new CubePosition());
 		switchPosition.whileHeld(new SwitchPosition());
 		scalePosition.whileHeld(new ScalePosition());
-		
+		restPosition.whenPressed(new RestPosition());
 		
 	}
 }
