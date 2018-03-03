@@ -13,7 +13,6 @@ public class AutoStraight extends Command {
 	
     public AutoStraight() {
     	requires(Robot.drivetrain);
-    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -24,21 +23,17 @@ public class AutoStraight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Robot.drivetrain.autoDrive(0.4, 0.4);
-    	setTimeout(2.0);
-    	Robot.drivetrain.autoDrive(0.4, 0.4);
-    	
-//    	if (this.went < 275) {
-//    		Robot.drivetrain.autoDrive(0.4, 0.4);
-//    		this.went = Robot.drivetrain.leftEncRate();
-//    	}
+    	this.went = Robot.drivetrain.leftEncRate();
+    			
+    	if (this.went < 275) {
+    		Robot.drivetrain.autoDrive(0.4, 0.4);
+    	}
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return this.went > 275 || isTimedOut();
     }
 
     // Called once after isFinished returns true

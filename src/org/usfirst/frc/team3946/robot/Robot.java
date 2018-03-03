@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+ 	 	/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -8,8 +8,8 @@
 package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.JoystickTankDrive;
-import org.usfirst.frc.team3946.robot.commands.LeftAutonomous;
-import org.usfirst.frc.team3946.robot.commands.RightAutonomous;
+import org.usfirst.frc.team3946.robot.commands.LeftSwitchAutonomous;
+import org.usfirst.frc.team3946.robot.commands.RightSwitchAutonomous;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
@@ -62,11 +62,14 @@ public class Robot extends TimedRobot {
 		
 		if(gameData.length() > 0) {
 			if(gameData.charAt(0) == 'L') {
-				m_autonomousCommand = new LeftAutonomous();
+				m_autonomousCommand = new LeftSwitchAutonomous();
 			} else {
-				m_autonomousCommand = new RightAutonomous();
+				m_autonomousCommand = new RightSwitchAutonomous();
 			}
 		}
+		
+		 m_chooser.addDefault("Left Auto Switch", new LeftSwitchAutonomous());
+		 m_chooser.addObject("Right Auto Switch", new RightSwitchAutonomous());
 		
 		UsbCamera frontCam = CameraServer.getInstance().startAutomaticCapture(RobotMap.frontCam);
 		

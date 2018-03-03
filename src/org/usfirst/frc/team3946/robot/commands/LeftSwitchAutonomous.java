@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LeftAutonomous extends CommandGroup {
+public class LeftSwitchAutonomous extends CommandGroup {
 
-    public LeftAutonomous() {
+    public LeftSwitchAutonomous() {
         // Add Commands here:
     	addSequential(new AutoLeftTurn());
     	addSequential(new AutoRightTurn());

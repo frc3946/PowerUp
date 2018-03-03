@@ -22,22 +22,18 @@ public class AutoRightTurn extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    
-    	Robot.drivetrain.autoDrive(0.4, 0);
-    	setTimeout(0.5);
-    	Robot.drivetrain.autoDrive(0, 0);
+    protected void execute() {    
+    	this.went = Robot.drivetrain.leftEncRate();
     	
-//    	if(this.went < 50) {
-//    		Robot.drivetrain.autoDrive(0.4, 0);	
-//    		this.went = Robot.drivetrain.leftEncRate();
-//    	}
+    	if(this.went < 50) {   		
+    		Robot.drivetrain.autoDrive(0.4, 0);	
+    	}
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return this.went > 50 || isTimedOut();
     }
 
     // Called once after isFinished returns true
