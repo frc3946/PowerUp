@@ -1,11 +1,13 @@
 package org.usfirst.frc.team3946.robot.subsystems;
 
+import org.usfirst.frc.team3946.robot.Robot;
 import org.usfirst.frc.team3946.robot.RobotMap;
 import org.usfirst.frc.team3946.robot.commands.Climber;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -32,7 +34,7 @@ public class Climb extends Subsystem {
     // here. Call these from Commands.
 	
 	public void climbSpeed() {
-		climbTalon.set(0.6);
+		climbTalon.set(Robot.m_oi.manipulatorController.getY(GenericHID.Hand.kLeft));
 	}
 	
 	public void climbStop() {

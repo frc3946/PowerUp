@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3946.robot.subsystems;
 
+import org.usfirst.frc.team3946.robot.Robot;
 import org.usfirst.frc.team3946.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -28,6 +29,10 @@ public class Arm extends Subsystem {
 		potRates = armPot.get();
 	
 		return potRates;
+	}
+	
+	public void armRest() {
+		Arm.armTalon.set(0);
 	}
 	
     public void initDefaultCommand() {

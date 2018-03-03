@@ -81,7 +81,11 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Xbox Tank Drive", new TankDrive());
 		SmartDashboard.putData("One Joystick Arcade Drive", new SingleJoyArcade());
 		SmartDashboard.putData("Two Joystick Arcade Drive", new DoubleJoyArcade());
-		
+		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
+		SmartDashboard.getNumber("Climb Encoder Rate", climb.climbRate());
+		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
+		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
+		SmartDashboard.putNumber("Robot Speed", drivetrain.getSpeed());
 	}
 
 	/**
@@ -156,11 +160,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
-		SmartDashboard.getNumber("Climb Encoder Rate", climb.climbRate());
-		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
-		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
-		SmartDashboard.putNumber("Robot Speed", drivetrain.getSpeed());
+		
 	}
 
 	/**
