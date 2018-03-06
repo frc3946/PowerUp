@@ -7,64 +7,40 @@
 
 package org.usfirst.frc.team3946.robot;
 
-import edu.wpi.first.wpilibj.AnalogInput;//temporary
-
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
 	
-	
-	/*
-	 * Drivetrain Motors
-	 */
+	//Drivetrain Motors
 	public static int frontLeftMotor = 1;
 	public static int frontRightMotor = 2;
 	public static int backLeftMotor = 3;
 	public static int backRightMotor = 4;
 	
-	/*
-	 * Cameras
-	 */
+	//Cameras
 	public static int frontCam = 0;
-	
-	/*
-	 *Intake
-	 */
+
+	//Intake
+	public static int leftServo = 0;
+	public static int rightServo = 2;
 	public static int intakeMotor = 1;
 	
-	/*
-	 *Claw 
-	 */
+	//Claw 
 	public static int clawSolenoid = 1;
-	
-	/*
-	 * Arm
-	 */
-	public static int armAnalogInput = 1;
+		
+	//Arm
 	public static int armTalon = 6;
-	
-	/*
-	 * Controllers (OI)
-	 */
+		
+	//Controllers (OI)
 	public static int leftStick = 0;
 	public static int rightStick = 1;
 	public static int manipulatorController = 2;
 	public static int driverController = 3;
 	
-	/*
-	 * LEDs
-	 */
+	//LEDs
 	public static int redLED = 0;
 	public static int greenLED = 1;
 	public static int blueLED = 2;
 	
-	/*
-	 * Climb
-	 */
+	//Climb
 	public static int climbEncoder = 1;
 	public static int climbTalon = 7;
 	}

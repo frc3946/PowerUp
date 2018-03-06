@@ -35,7 +35,7 @@ public class AutoStraight extends Command {
     protected boolean isFinished() {
         return this.went > 275 || isTimedOut();
     }
-
+    
     // Called once after isFinished returns true
     protected void end() {
     	Robot.drivetrain.autoDrive(0, 0);

@@ -67,6 +67,15 @@ public class Robot extends TimedRobot {
 				m_autonomousCommand = new RightSwitchAutonomous();
 			}
 		}
+	
+		if(gameData.length() > 0) {
+			if(gameData.charAt(1) == 'L') {
+//				m_autonomousCommand = new LeftScaleAutonomous();
+			} else {
+//				m_autonomousCommand = new RightScaleAutonomous();
+			}
+			
+		}
 		
 		 m_chooser.addDefault("Left Auto Switch", new LeftSwitchAutonomous());
 		 m_chooser.addObject("Right Auto Switch", new RightSwitchAutonomous());
@@ -89,6 +98,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
 		SmartDashboard.putNumber("Robot Speed", drivetrain.getSpeed());
+		SmartDashboard.putData("Left SWITCH Auto", new LeftSwitchAutonomous());
+		SmartDashboard.putData("Right SWITCH Auto", new RightSwitchAutonomous());
 	}
 
 	/**
@@ -150,10 +161,7 @@ public class Robot extends TimedRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
-		
-		//	SmartDashboard.putNumber("Robot Speed", drivetrain.actualSpeed);
-		
+			m_autonomousCommand.cancel();		
 		}
 	}
 
