@@ -7,11 +7,13 @@
 
 package org.usfirst.frc.team3946.robot;
 
+import org.usfirst.frc.team3946.robot.commands.ClosedIntakeArm;
 import org.usfirst.frc.team3946.robot.commands.CubeIn;
 import org.usfirst.frc.team3946.robot.commands.CubeOut;
 import org.usfirst.frc.team3946.robot.commands.CubePosition;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.Grab;
+import org.usfirst.frc.team3946.robot.commands.ReadyIntakeArm;
 import org.usfirst.frc.team3946.robot.commands.Release;
 import org.usfirst.frc.team3946.robot.commands.RestPosition;
 import org.usfirst.frc.team3946.robot.commands.ScalePosition;
@@ -52,7 +54,8 @@ public class OI {
 	Button scalePosition = new JoystickButton(manipulatorController, 4);
 	Button cubeIn = new JoystickButton(manipulatorController, 5);
 	Button cubeOut = new JoystickButton(manipulatorController, 6);
-	Button toggleClaw = new JoystickButton(manipulatorController, 7);
+	Button enableIntake = new JoystickButton(manipulatorController, 7);
+	Button disableIntake = new JoystickButton(manipulatorController, 8);
 	
 	public OI() {		
 		
@@ -65,11 +68,12 @@ public class OI {
 		normalTank.whenPressed(new TankDrive());
 		cubeOut.whileHeld(new CubeOut());
 		cubeIn.whileHeld(new CubeIn());	
-		toggleClaw.toggleWhenPressed(new Grab());
 		cubePosition.whileHeld(new CubePosition());
 		switchPosition.whileHeld(new SwitchPosition());
 		scalePosition.whileHeld(new ScalePosition());
 		restPosition.whenPressed(new RestPosition());
+		enableIntake.whileHeld(new ReadyIntakeArm());
+		disableIntake.whileHeld(new ClosedIntakeArm());
 		
 	}
 }
