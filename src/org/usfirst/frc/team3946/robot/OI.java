@@ -42,6 +42,8 @@ public class OI {
 	public XboxController manipulatorController = new XboxController(RobotMap.manipulatorController);
 	public XboxController driverController = new XboxController(RobotMap.driverController);
 
+	//Buttons on the Driver's Controller...
+	
 	Button normalTank = new JoystickButton(manipulatorController, 4);
 	Button singleJoyArcade = new JoystickButton(manipulatorController, 7);
 	Button doubleJoyArcade = new JoystickButton(manipulatorController, 8);
@@ -68,12 +70,12 @@ public class OI {
 		normalTank.whenPressed(new TankDrive());
 		cubeOut.whileHeld(new CubeOut());
 		cubeIn.whileHeld(new CubeIn());	
-		cubePosition.whileHeld(new CubePosition());
-		switchPosition.whileHeld(new SwitchPosition());
-		scalePosition.whileHeld(new ScalePosition());
+		cubePosition.whenPressed(new CubePosition());
+		switchPosition.whenPressed(new SwitchPosition());
+		scalePosition.whenPressed(new ScalePosition());
 		restPosition.whenPressed(new RestPosition());
-		enableIntake.whileHeld(new ReadyIntakeArm());
-		disableIntake.whileHeld(new ClosedIntakeArm());
+		enableIntake.whenPressed(new ReadyIntakeArm());
+		disableIntake.whenPressed(new ClosedIntakeArm());
 		
 	}
 }

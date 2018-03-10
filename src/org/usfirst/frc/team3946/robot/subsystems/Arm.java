@@ -30,11 +30,7 @@ public class Arm extends Subsystem {
 	
 		return potRates;
 	}
-	
-	public void armRest() {
-		Arm.armTalon.set(0);
-	}
-	
+		
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

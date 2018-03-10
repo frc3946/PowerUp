@@ -9,6 +9,7 @@ package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.JoystickTankDrive;
 import org.usfirst.frc.team3946.robot.commands.LeftSwitchAutonomous;
+import org.usfirst.frc.team3946.robot.commands.ReadyIntakeArm;
 import org.usfirst.frc.team3946.robot.commands.RightSwitchAutonomous;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	Command teleop;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -99,6 +101,7 @@ public class Robot extends TimedRobot {
 		
 		Robot.intake.leftIntakeServo.set(0);
 		Robot.intake.rightIntakeServo.set(1);
+		SmartDashboard.putNumber("Right Intake Servo",7);
 	}
 
 	/**
@@ -159,6 +162,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		teleop = new ReadyIntakeArm();
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();		
 		}
@@ -169,15 +173,17 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		
 		Scheduler.getInstance().run();
 		
 		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
-		SmartDashboard.getNumber("Climb Encoder Rate", climb.climbRate());
+		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
 		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
 		SmartDashboard.getNumber("Robot Speed", drivetrain.getSpeed());
-		SmartDashboard.getNumber("Left Intake Servo", intake.leftServoAngle());
-		SmartDashboard.getNumber("Right Intake Servo", intake.rightServoAngle());
+		SmartDashboard.putNumber("Left Intake Servo", Robot.intake.leftIntakeServo.get());
+		SmartDashboard.putNumber("Right Intake Servo", Robot.intake.rightServoAngle());
+		SmartDashboard.updateValues();
 
 	}
 

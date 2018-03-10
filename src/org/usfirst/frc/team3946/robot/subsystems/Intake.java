@@ -2,7 +2,6 @@ package org.usfirst.frc.team3946.robot.subsystems;
 
 import org.usfirst.frc.team3946.robot.Robot;
 import org.usfirst.frc.team3946.robot.RobotMap;
-import org.usfirst.frc.team3946.robot.commands.IntakeStop;
 
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
@@ -23,45 +22,32 @@ public class Intake extends Subsystem {
     // here. Call these from Commands.
 
 	public double leftServoAngle() {
-		return leftAngle = leftIntakeServo.get();
+	    leftAngle=leftIntakeServo.get();	//gets left servo angle
+		return leftAngle;
 	}
 	
 	public double rightServoAngle() {
-		rightAngle = rightIntakeServo.get();
+		rightAngle = rightIntakeServo.get();	//gets right servo angle
 		return rightAngle;
 	}
 	
 	public void servoSpeed() {
-		leftIntakeServo.set(0.5);
-		rightIntakeServo.set(0.5); //boi am i dum
+		leftIntakeServo.set(0.5);	//sets both of the servo speeds
+		rightIntakeServo.set(0.5); 
 	}
 	
 	public void servoComeback() {
-		leftIntakeServo.set(-0.5);
-		rightIntakeServo.set(-0.5); // boi am i dum
+		leftIntakeServo.setAngle(0);	//has the servo come back to
+		rightIntakeServo.setAngle(180);
 	}
 	
 	public void setIntakeSpeed(double speed) {
-		Robot.intake.intakeMotor.set(speed);
+		Robot.intake.intakeMotor.set(speed);	//sets the intake wheels speed
 	}
 	
-	public void intakeStop(double speed) {
-		Robot.intake.intakeMotor.set(0);
-	}
-	
-	public void intakeEnable() {
-		leftIntakeServo.setAngle(75);
-		rightIntakeServo.setAngle(75);
-	}
-	
-	public void intakeDisable() {
-		leftIntakeServo.setAngle(0);
-		rightIntakeServo.setAngle(0);
-	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new IntakeStop());
     }
 }
 

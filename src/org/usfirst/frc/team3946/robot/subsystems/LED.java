@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -27,12 +26,6 @@ public class LED extends Subsystem {
 
     public void allOff() {
     	red.set(false);
-    	blue.set(false);
-    	green.set(false);
-    }
-    
-    public void cop() {
-    	red.set(true);
     	blue.set(false);
     	green.set(false);
     }
