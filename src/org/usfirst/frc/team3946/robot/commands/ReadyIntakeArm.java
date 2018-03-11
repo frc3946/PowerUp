@@ -25,6 +25,7 @@ public class ReadyIntakeArm extends Command {
     protected void execute() {
     	Robot.intake.leftIntakeServo.set(endL);
     	Robot.intake.rightIntakeServo.set(endR);
+    	Robot.intake.leftIntakeServo.setSpeed(.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
