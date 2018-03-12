@@ -100,7 +100,7 @@ public class Robot extends TimedRobot {
 		
 		
 		Robot.intake.leftIntakeServo.set(0);
-		Robot.intake.rightIntakeServo.set(1);
+//		Robot.intake.rightIntakeServo.set(1);
 		SmartDashboard.putNumber("Right Intake Servo",7);
 	}
 
@@ -173,7 +173,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		
+				
 		Scheduler.getInstance().run();
 		
 		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
@@ -182,7 +182,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
 		SmartDashboard.getNumber("Robot Speed", drivetrain.getSpeed());
 		SmartDashboard.putNumber("Left Intake Servo", Robot.intake.leftIntakeServo.get());
-		SmartDashboard.putNumber("Right Intake Servo", Robot.intake.rightServoAngle());
+//		SmartDashboard.putNumber("Right Intake Servo", Robot.intake.rightServoAngle());
 		SmartDashboard.updateValues();
 
 	}

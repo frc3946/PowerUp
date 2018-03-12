@@ -22,15 +22,19 @@ public class ClosedIntakeArm extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.intake.leftServoAngle() > 0) {
-    		Robot.intake.setIntakeSpeed(-.5);
+    		Robot.intake.leftIntakeMotor.set(-.5);
+    		Robot.intake.rightIntakeMotor.set(0.5);
     	} else {
-    		Robot.intake.setIntakeSpeed(0);
+    		Robot.intake.leftIntakeMotor.set(0);
+    		Robot.intake.rightIntakeMotor.set(0);
     	}
-    	if(Robot.intake.rightServoAngle() > 0) {
-    		Robot.intake.setIntakeSpeed(-.5);
-    	} else {
-    		Robot.intake.setIntakeSpeed(0);
-    	}
+//    	if(Robot.intake.rightServoAngle() > 0) {
+//    		Robot.intake.leftIntakeMotor.set(-.5);
+//    		Robot.intake.rightIntakeMotor.set(-.5);
+//    	} else {
+//    		Robot.intake.leftIntakeMotor.set(0);
+//    		Robot.intake.rightIntakeMotor.set(0);
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Release extends Command {
 
     public Release() {
+    	requires(Robot.claw);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,7 +21,7 @@ public class Release extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.claw.closeClaw();
+    	Robot.claw.openClaw();
     }
 
     // Make this return true when this Command no longer needs to run execute()

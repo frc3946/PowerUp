@@ -1,4 +1,5 @@
 /*----------------------------------------------------------------------------*/
+
 /* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
@@ -7,6 +8,7 @@
 
 package org.usfirst.frc.team3946.robot;
 
+import org.usfirst.frc.team3946.robot.commands.Climber;
 import org.usfirst.frc.team3946.robot.commands.ClosedIntakeArm;
 import org.usfirst.frc.team3946.robot.commands.CubeIn;
 import org.usfirst.frc.team3946.robot.commands.CubeOut;
@@ -56,8 +58,11 @@ public class OI {
 	Button scalePosition = new JoystickButton(manipulatorController, 4);
 	Button cubeIn = new JoystickButton(manipulatorController, 5);
 	Button cubeOut = new JoystickButton(manipulatorController, 6);
-	Button enableIntake = new JoystickButton(manipulatorController, 7);
-	Button disableIntake = new JoystickButton(manipulatorController, 8);
+	Button openClamp = new JoystickButton(manipulatorController, 7);
+	Button closeClamp = new JoystickButton(manipulatorController, 8);
+//	Button climb = new JoystickButton(manipulatorController, 9);
+//	Button openIntake = new JoystickButton(manipulatorController, 5);
+//	Button closeIntake = new JoystickButton(manipulatorController, 6);
 	
 	public OI() {		
 		
@@ -74,8 +79,10 @@ public class OI {
 		switchPosition.whenPressed(new SwitchPosition());
 		scalePosition.whenPressed(new ScalePosition());
 		restPosition.whenPressed(new RestPosition());
-		enableIntake.whenPressed(new ReadyIntakeArm());
-		disableIntake.whenPressed(new ClosedIntakeArm());
-		
+		openClamp.whenPressed(new Grab());
+		closeClamp.whenPressed(new Release());
+//		climb.whileActive(new Climber());
+//		openIntake.whileHeld(new ReadyIntakeArm());
+//		closeIntake.whileHeld(new ClosedIntakeArm());
 	}
 }

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Claw extends Subsystem {
-	Solenoid clawSolenoid = new Solenoid(5,1);
+	Solenoid clawSolenoid = new Solenoid(1);
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -23,6 +23,7 @@ public class Claw extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
+    	clawSolenoid.free();
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }

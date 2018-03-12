@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
+import org.usfirst.frc.team3946.robot.subsystems.Climb;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,15 +22,12 @@ public class Climber extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	if(Robot.climb.climbRate() < 360) {
-    		Robot.climb.climbSpeed();
-    	}
+    	Climb.climbTalon.set(.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

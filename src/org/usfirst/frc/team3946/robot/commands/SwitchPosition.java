@@ -22,8 +22,7 @@ public class SwitchPosition extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	if(Robot.arm.potRate() < 146) {
+    	if(Robot.arm.potRate() > 317) {
     		Arm.armTalon.set(.5);
     	} else {
     		Arm.armTalon.set(0);

@@ -18,13 +18,13 @@ public class ReadyIntakeArm extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.intake.leftIntakeServo.set(startL);
-    	Robot.intake.rightIntakeServo.set(startR);
+//    	Robot.intake.rightIntakeServo.set(startR);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.intake.leftIntakeServo.set(endL);
-    	Robot.intake.rightIntakeServo.set(endR);
+//    	Robot.intake.rightIntakeServo.set(endR);
     	Robot.intake.leftIntakeServo.setSpeed(.5);
     }
 

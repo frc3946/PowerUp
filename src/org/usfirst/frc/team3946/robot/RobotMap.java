@@ -21,7 +21,8 @@ public class RobotMap {
 	//Intake
 	public static int leftServo = 0;
 	public static int rightServo = 2;
-	public static int intakeMotor = 1;
+	public static int leftIntakeMotor = 1;
+	public static int rightIntakeMotor = 2;
 	
 	//Claw 
 	public static int clawSolenoid = 1;
