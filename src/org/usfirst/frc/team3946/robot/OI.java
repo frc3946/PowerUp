@@ -53,20 +53,20 @@ public class OI {
 	
 	//Buttons on Manipulator's Controller...
 	
-	Button cubePosition = new JoystickButton(manipulatorController, 9);
-	Button restPosition = new JoystickButton(manipulatorController, 10);
+	Button openIntake = new JoystickButton(manipulatorController, 1);
+	Button closeIntake = new JoystickButton(manipulatorController, 2);
 	Button switchPosition = new  JoystickButton(manipulatorController, 3);
 	Button scalePosition = new JoystickButton(manipulatorController, 4);
 	Button cubeIn = new JoystickButton(manipulatorController, 5);
 	Button cubeOut = new JoystickButton(manipulatorController, 6);
 	Button openClamp = new JoystickButton(manipulatorController, 7);
 	Button closeClamp = new JoystickButton(manipulatorController, 8);
-//	Button climb = new JoystickButton(manipulatorController, 9);
-	Button openIntake = new JoystickButton(manipulatorController, 1);
-	Button closeIntake = new JoystickButton(manipulatorController, 2);
+	Button cubePosition = new JoystickButton(manipulatorController, 9);
+	Button restPosition = new JoystickButton(manipulatorController, 10);
 
 	//Buttons on Manipulator's Joystick...
 	
+	Button climbJoy = new JoystickButton(manipulatorJoystick, 1);
 	Button cubePositionJoy = new JoystickButton(manipulatorJoystick, 2);
 	Button restPositionJoy = new JoystickButton(manipulatorJoystick, 3);
 	Button switchPositionJoy = new  JoystickButton(manipulatorJoystick, 4);
@@ -95,7 +95,6 @@ public class OI {
 		restPosition.whenPressed(new RestPosition());
 		openClamp.whenPressed(new Grab());
 		closeClamp.whenPressed(new Release());
-//		climb.whileActive(new Climber());
 		openIntake.whenPressed(new ReadyIntakeArm());
 		closeIntake.whenPressed(new ClosedIntakeArm());
 		

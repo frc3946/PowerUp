@@ -34,7 +34,7 @@ public class Climb extends Subsystem {
     // here. Call these from Commands.
 	
 	public void climbSpeed() {
-		climbTalon.set(Robot.m_oi.manipulatorController.getY(GenericHID.Hand.kLeft));
+		climbTalon.set(1);
 	}
 	
 	public void climbStop() {
