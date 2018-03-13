@@ -35,6 +35,7 @@ public class RobotMap {
 	public static int rightStick = 1;
 	public static int manipulatorController = 2;
 	public static int driverController = 3;
+	public static int manipulatorJoystick = 4;
 	
 	//LEDs
 	public static int redLED = 0;

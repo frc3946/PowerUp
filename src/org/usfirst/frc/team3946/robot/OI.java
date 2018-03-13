@@ -43,6 +43,7 @@ public class OI {
 	public Joystick rightStick = new Joystick(RobotMap.rightStick);
 	public XboxController manipulatorController = new XboxController(RobotMap.manipulatorController);
 	public XboxController driverController = new XboxController(RobotMap.driverController);
+	public Joystick manipulatorJoystick = new Joystick(RobotMap.manipulatorJoystick);
 
 	//Buttons on the Driver's Controller...
 	
@@ -63,6 +64,19 @@ public class OI {
 //	Button climb = new JoystickButton(manipulatorController, 9);
 //	Button openIntake = new JoystickButton(manipulatorController, 5);
 //	Button closeIntake = new JoystickButton(manipulatorController, 6);
+
+	//Buttons on Manipulator's Joystick...
+	
+	Button cubePositionJoy = new JoystickButton(manipulatorController, 2);
+	Button restPositionJoy = new JoystickButton(manipulatorController, 3);
+	Button switchPositionJoy = new  JoystickButton(manipulatorController, 4);
+	Button scalePositionJoy = new JoystickButton(manipulatorController, 5);
+	Button openClampJoy = new JoystickButton(manipulatorController, 6);
+	Button closeClampJoy = new JoystickButton(manipulatorController, 7);
+	Button cubeInJoy = new JoystickButton(manipulatorController, 8);
+	Button cubeOutJoy = new JoystickButton(manipulatorController, 9);
+	Button armOutJoy = new JoystickButton(manipulatorController, 10);
+	Button armInJoy = new JoystickButton(manipulatorController, 11);
 	
 	public OI() {		
 		
@@ -84,5 +98,17 @@ public class OI {
 //		climb.whileActive(new Climber());
 //		openIntake.whileHeld(new ReadyIntakeArm());
 //		closeIntake.whileHeld(new ClosedIntakeArm());
+		
+		cubeOutJoy.whileHeld(new CubeOut());
+		cubeInJoy.whileHeld(new CubeIn());	
+		cubePositionJoy.whenPressed(new CubePosition());
+		switchPositionJoy.whenPressed(new SwitchPosition());
+		scalePositionJoy.whenPressed(new ScalePosition());
+		restPositionJoy.whenPressed(new RestPosition());
+		openClampJoy.whenPressed(new Grab());
+		closeClampJoy.whenPressed(new Release());
+		armOutJoy.whenPressed(new ReadyIntakeArm());
+		armInJoy.whenPressed(new ClosedIntakeArm());
+		
 	}
 }
