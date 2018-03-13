@@ -14,27 +14,19 @@ public class ClosedIntakeArm extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
+    double startR = 0, startL = 1, endR = 150, endL = 30;
 
     // Called just before this Command runs the first time
     protected void initialize() {
+//    	Robot.intake.leftIntakeServo.setDisabled();
+//    	Robot.intake.rightIntakeServo.setAngle(startR);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.intake.leftServoAngle() > 0) {
-    		Robot.intake.leftIntakeMotor.set(-.5);
-    		Robot.intake.rightIntakeMotor.set(0.5);
-    	} else {
-    		Robot.intake.leftIntakeMotor.set(0);
-    		Robot.intake.rightIntakeMotor.set(0);
-    	}
-//    	if(Robot.intake.rightServoAngle() > 0) {
-//    		Robot.intake.leftIntakeMotor.set(-.5);
-//    		Robot.intake.rightIntakeMotor.set(-.5);
-//    	} else {
-//    		Robot.intake.leftIntakeMotor.set(0);
-//    		Robot.intake.rightIntakeMotor.set(0);
-//    	}
+    	Robot.intake.leftIntakeServo.setAngle(60);
+    	Robot.intake.rightIntakeServo.setAngle(120);
+//    	Robot.intake.rightIntakeServo.setSpeed(.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()

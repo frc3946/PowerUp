@@ -99,9 +99,9 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Right SWITCH Auto", new RightSwitchAutonomous());
 		
 		
-		Robot.intake.leftIntakeServo.set(0);
+//		Robot.intake.leftIntakeServo.set(0);
 //		Robot.intake.rightIntakeServo.set(1);
-		SmartDashboard.putNumber("Right Intake Servo",7);
+//		SmartDashboard.putNumber("Right Intake Servo",7);
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		teleop = new ReadyIntakeArm();
+//		teleop = new ReadyIntakeArm();
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();		
 		}
@@ -176,14 +176,14 @@ public class Robot extends TimedRobot {
 				
 		Scheduler.getInstance().run();
 		
-		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
-		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
+//		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
+//		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
 		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
 		SmartDashboard.getNumber("Robot Speed", drivetrain.getSpeed());
-		SmartDashboard.putNumber("Left Intake Servo", Robot.intake.leftIntakeServo.get());
+//		SmartDashboard.putNumber("Left Intake Servo", Robot.intake.leftIntakeServo.get());
 //		SmartDashboard.putNumber("Right Intake Servo", Robot.intake.rightServoAngle());
-		SmartDashboard.updateValues();
+//		SmartDashboard.updateValues();
 
 	}
 

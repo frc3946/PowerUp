@@ -53,8 +53,8 @@ public class OI {
 	
 	//Buttons on Manipulator's Controller...
 	
-	Button cubePosition = new JoystickButton(manipulatorController, 1);
-	Button restPosition = new JoystickButton(manipulatorController, 2);
+	Button cubePosition = new JoystickButton(manipulatorController, 9);
+	Button restPosition = new JoystickButton(manipulatorController, 10);
 	Button switchPosition = new  JoystickButton(manipulatorController, 3);
 	Button scalePosition = new JoystickButton(manipulatorController, 4);
 	Button cubeIn = new JoystickButton(manipulatorController, 5);
@@ -62,21 +62,21 @@ public class OI {
 	Button openClamp = new JoystickButton(manipulatorController, 7);
 	Button closeClamp = new JoystickButton(manipulatorController, 8);
 //	Button climb = new JoystickButton(manipulatorController, 9);
-//	Button openIntake = new JoystickButton(manipulatorController, 5);
-//	Button closeIntake = new JoystickButton(manipulatorController, 6);
+	Button openIntake = new JoystickButton(manipulatorController, 1);
+	Button closeIntake = new JoystickButton(manipulatorController, 2);
 
 	//Buttons on Manipulator's Joystick...
 	
-	Button cubePositionJoy = new JoystickButton(manipulatorController, 2);
-	Button restPositionJoy = new JoystickButton(manipulatorController, 3);
-	Button switchPositionJoy = new  JoystickButton(manipulatorController, 4);
-	Button scalePositionJoy = new JoystickButton(manipulatorController, 5);
-	Button openClampJoy = new JoystickButton(manipulatorController, 6);
-	Button closeClampJoy = new JoystickButton(manipulatorController, 7);
-	Button cubeInJoy = new JoystickButton(manipulatorController, 8);
-	Button cubeOutJoy = new JoystickButton(manipulatorController, 9);
-	Button armOutJoy = new JoystickButton(manipulatorController, 10);
-	Button armInJoy = new JoystickButton(manipulatorController, 11);
+	Button cubePositionJoy = new JoystickButton(manipulatorJoystick, 2);
+	Button restPositionJoy = new JoystickButton(manipulatorJoystick, 3);
+	Button switchPositionJoy = new  JoystickButton(manipulatorJoystick, 4);
+	Button scalePositionJoy = new JoystickButton(manipulatorJoystick, 5);
+	Button openClampJoy = new JoystickButton(manipulatorJoystick, 6);
+	Button closeClampJoy = new JoystickButton(manipulatorJoystick, 7);
+	Button cubeInJoy = new JoystickButton(manipulatorJoystick, 8);
+	Button cubeOutJoy = new JoystickButton(manipulatorJoystick, 9);
+	Button armOutJoy = new JoystickButton(manipulatorJoystick, 10);
+	Button armInJoy = new JoystickButton(manipulatorJoystick, 11);
 	
 	public OI() {		
 		
@@ -96,8 +96,8 @@ public class OI {
 		openClamp.whenPressed(new Grab());
 		closeClamp.whenPressed(new Release());
 //		climb.whileActive(new Climber());
-//		openIntake.whileHeld(new ReadyIntakeArm());
-//		closeIntake.whileHeld(new ClosedIntakeArm());
+		openIntake.whenPressed(new ReadyIntakeArm());
+		closeIntake.whenPressed(new ClosedIntakeArm());
 		
 		cubeOutJoy.whileHeld(new CubeOut());
 		cubeInJoy.whileHeld(new CubeIn());	
