@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
+import org.usfirst.frc.team3946.robot.subsystems.Claw;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -17,11 +18,12 @@ public class Release extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+//    	Claw.clawSolenoid.set(false);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.claw.openClaw();
+    	Robot.claw.clawSolenoid.set(false);//Claw.clawSolenoid.set(false);
     }
 
     // Make this return true when this Command no longer needs to run execute()

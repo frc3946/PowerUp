@@ -23,7 +23,7 @@ public class RestPosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.arm.potRate() > 0) {
-    		Arm.armTalon.set(.2);
+    		Arm.armTalon.set(.35);
     	} else {   
     		Arm.armTalon.set(0);
     	}

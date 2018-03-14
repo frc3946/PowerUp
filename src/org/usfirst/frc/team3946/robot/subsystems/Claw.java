@@ -9,21 +9,25 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Claw extends Subsystem {
-	Solenoid clawSolenoid = new Solenoid(1);
+
+	boolean on = true;
+	boolean off = false;
+	
+	public Solenoid clawSolenoid = new Solenoid(RobotMap.clawSolenoid);
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-	public void openClaw() {
-		clawSolenoid.set(true);
-	}
-	
-	public void closeClaw() {
-		clawSolenoid.set(false);
-	}
+//	public void openClaw() {
+//		clawSolenoid.set(on);
+//	}
+//	
+//	public void closeClaw() {
+//		clawSolenoid.set(off);
+//	}
 	
     public void initDefaultCommand() {
-    	clawSolenoid.free();
+    	clawSolenoid.set(on);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }

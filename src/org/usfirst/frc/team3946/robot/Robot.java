@@ -176,8 +176,8 @@ public class Robot extends TimedRobot {
 				
 		Scheduler.getInstance().run();
 		
-//		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
-//		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
+		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
+		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
 		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
 		SmartDashboard.getNumber("Robot Speed", drivetrain.getSpeed());

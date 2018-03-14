@@ -22,7 +22,7 @@ public class CubePosition extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {    	
-    	if(Robot.arm.potRate() < 326) {
+    	if(Robot.arm.potRate() < 361) {
     		Arm.armTalon.set(-0.4);
     	} else {
     		end();

@@ -55,14 +55,14 @@ public class OI {
 	
 	Button openIntake = new JoystickButton(manipulatorController, 1);
 	Button closeIntake = new JoystickButton(manipulatorController, 2);
-	Button switchPosition = new  JoystickButton(manipulatorController, 3);
+//	Button switchPosition = new  JoystickButton(manipulatorController, 3);
 	Button scalePosition = new JoystickButton(manipulatorController, 4);
 	Button cubeIn = new JoystickButton(manipulatorController, 5);
 	Button cubeOut = new JoystickButton(manipulatorController, 6);
-	Button openClamp = new JoystickButton(manipulatorController, 7);
+//	Button openClamp = new JoystickButton(manipulatorController, 7);
 	Button closeClamp = new JoystickButton(manipulatorController, 8);
-	Button cubePosition = new JoystickButton(manipulatorController, 9);
-	Button restPosition = new JoystickButton(manipulatorController, 10);
+	Button cubePosition = new JoystickButton(manipulatorController, 3);
+	Button restPosition = new JoystickButton(manipulatorController, 7);
 
 	//Buttons on Manipulator's Joystick...
 	
@@ -90,10 +90,10 @@ public class OI {
 		cubeOut.whileHeld(new CubeOut());
 		cubeIn.whileHeld(new CubeIn());	
 		cubePosition.whenPressed(new CubePosition());
-		switchPosition.whenPressed(new SwitchPosition());
+//		switchPosition.whenPressed(new SwitchPosition());
 		scalePosition.whenPressed(new ScalePosition());
 		restPosition.whenPressed(new RestPosition());
-		openClamp.whenPressed(new Grab());
+//		openClamp.whenPressed(new Grab());
 		closeClamp.whenPressed(new Release());
 		openIntake.whenPressed(new ReadyIntakeArm());
 		closeIntake.whenPressed(new ClosedIntakeArm());
