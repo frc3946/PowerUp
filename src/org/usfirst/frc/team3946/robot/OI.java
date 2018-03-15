@@ -75,8 +75,8 @@ public class OI {
 	Button closeClampJoy = new JoystickButton(manipulatorJoystick, 7);
 	Button cubeInJoy = new JoystickButton(manipulatorJoystick, 8);
 	Button cubeOutJoy = new JoystickButton(manipulatorJoystick, 9);
-	Button armOutJoy = new JoystickButton(manipulatorJoystick, 10);
-	Button armInJoy = new JoystickButton(manipulatorJoystick, 11);
+	Button armInJoy = new JoystickButton(manipulatorJoystick, 10);
+	Button armOutJoy = new JoystickButton(manipulatorJoystick, 11);
 	
 	public OI() {		
 		
@@ -100,8 +100,8 @@ public class OI {
 		
 		cubeOutJoy.whileHeld(new CubeOut());
 		cubeInJoy.whileHeld(new CubeIn());	
-		cubePositionJoy.whenPressed(new CubePosition());
-		switchPositionJoy.whenPressed(new SwitchPosition());
+		cubePositionJoy.whileHeld(new CubePosition());
+		switchPositionJoy.whileHeld(new SwitchPosition());
 		scalePositionJoy.whenPressed(new ScalePosition());
 		restPositionJoy.whenPressed(new RestPosition());
 		openClampJoy.whenPressed(new Grab());

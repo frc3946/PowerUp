@@ -24,11 +24,11 @@ public class Climb extends Subsystem {
 		climbTalon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 5);
 	
 	}
-	
-	public double climbRate() {
-		climbRates = climbTalon.getSelectedSensorPosition(0);
-		return climbRates;
-	}
+//	
+//	public double climbRate() {
+//		climbRates = climbTalon.getSelectedSensorPosition(0);
+//		return climbRates;
+//	}
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -44,7 +44,6 @@ public class Climb extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new Climber());
     }
 }
 

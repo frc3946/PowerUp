@@ -24,6 +24,8 @@ public class ScalePosition extends Command {
     protected void execute() {
     	if(Robot.arm.potRate() > 136) {
     		Arm.armTalon.set(1);
+    	} else {
+    		end();
     	}
     }
     

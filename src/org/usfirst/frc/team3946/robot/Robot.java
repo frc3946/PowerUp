@@ -62,14 +62,16 @@ public class Robot extends TimedRobot {
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
-		if(gameData.length() > 0) {
-			if(gameData.charAt(0) == 'L') {
-				m_autonomousCommand = new LeftSwitchAutonomous();
-			} else {
-				m_autonomousCommand = new RightSwitchAutonomous();
-			}
-		}
-	
+		m_autonomousCommand = new LeftSwitchAutonomous();
+		
+//		if(gameData.length() > 0) {
+//			if(gameData.charAt(0) == 'L') {
+//				m_autonomousCommand = new LeftSwitchAutonomous();
+//			} else {
+//				m_autonomousCommand = new RightSwitchAutonomous();
+//			}
+//		}
+//	
 		if(gameData.length() > 0) {
 			if(gameData.charAt(1) == 'L') {
 //				m_autonomousCommand = new LeftScaleAutonomous();
@@ -140,6 +142,8 @@ public class Robot extends TimedRobot {
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
 		
+		m_autonomousCommand = new LeftSwitchAutonomous();
+		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
@@ -177,7 +181,7 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 		
 		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
-		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
+//		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
 		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
 		SmartDashboard.getNumber("Robot Speed", drivetrain.getSpeed());

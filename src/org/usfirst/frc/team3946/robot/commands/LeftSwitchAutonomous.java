@@ -9,8 +9,6 @@ public class LeftSwitchAutonomous extends CommandGroup {
 
     public LeftSwitchAutonomous() {
         // Add Commands here:
-    	addSequential(new AutoLeftTurn());
-    	addSequential(new AutoRightTurn());
     	addSequential(new AutoStraight());
     	
 //    	addSequential(new AutoLeftTurn());

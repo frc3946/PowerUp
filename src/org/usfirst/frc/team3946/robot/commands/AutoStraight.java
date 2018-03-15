@@ -19,16 +19,16 @@ public class AutoStraight extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(1);
+    	setTimeout(5);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	this.went = Robot.drivetrain.leftEncRate();
     			
-    	if (this.went < 275) {
+//    	if (this.went < 275) {
     		Robot.drivetrain.autoDrive(0.4, 0.4);
-    	}
+//    	}
     	
     }
 
