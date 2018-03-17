@@ -2,6 +2,7 @@ package org.usfirst.frc.team3946.robot.subsystems;
 
 import org.usfirst.frc.team3946.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -18,8 +19,8 @@ public class RobotArm extends PIDSubsystem {
 	final double scalePos = 136;
 	double potRates;
 	
-	WPI_TalonSRX armTalon = new WPI_TalonSRX(RobotMap.armTalon);
-	AnalogPotentiometer armPot = new AnalogPotentiometer(2, 360, 0);
+	public static WPI_TalonSRX armTalon = new WPI_TalonSRX(RobotMap.armTalon);
+//	AnalogPotentiometer armPot = new AnalogPotentiometer(1, 360, 0);
 	
     // Initialize your subsystem here
     public RobotArm() {				
@@ -30,6 +31,8 @@ public class RobotArm extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
+    	armTalon.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0);
+    	armTalon.setSensorPhase(true);
     }
 
     public void initDefaultCommand() {
@@ -69,10 +72,15 @@ public class RobotArm extends PIDSubsystem {
     	armTalon.set(0);
     }
     
+    public void setSpeed(double speed) {
+    	armTalon.set(speed);
+    }
+    
 	public double potRate() {
-		potRates = armPot.get();
+		potRates = 0;
 		return potRates;
-}
+	}
 
+	
     
 }

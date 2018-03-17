@@ -2,7 +2,9 @@ package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
 import org.usfirst.frc.team3946.robot.subsystems.Arm;
+import org.usfirst.frc.team3946.robot.subsystems.RobotArm;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -11,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CubePosition extends Command {
 
     public CubePosition() {
-    	requires(Robot.arm);
+    	requires(Robot.robotArm);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -22,7 +24,10 @@ public class CubePosition extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    Robot.robotArm.cubePosition();
+    	
+    RobotArm.armTalon.set(Robot.m_oi.manipulatorController.getY(GenericHID.Hand.kLeft));
+    	
+//    Robot.robotArm.cubePosition();
 //    	if(Robot.arm.potRate() < 362.5) {
 //    		Arm.armTalon.set(-0.4);
 //    	}
