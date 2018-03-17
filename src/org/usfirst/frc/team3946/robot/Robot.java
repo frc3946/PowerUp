@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
 	public static final Arm arm = new Arm();
 	public static final Climb climb = new Climb();
 	public static final LED led = new LED();
-	public static final RobotArm armPID = new RobotArm();
+	public static final RobotArm robotArm = new RobotArm();
 	
 	public static OI m_oi; 
 
@@ -203,7 +203,7 @@ public class Robot extends TimedRobot {
 				
 		Scheduler.getInstance().run();
 		
-		SmartDashboard.putNumber("Arm Potentiometer", arm.potRate());
+		SmartDashboard.putNumber("Arm Potentiometer", robotArm.potRate());
 //		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
 		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());

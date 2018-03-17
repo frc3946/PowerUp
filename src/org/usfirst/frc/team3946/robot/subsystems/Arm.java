@@ -13,22 +13,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Arm extends Subsystem {
 	
-	public static AnalogPotentiometer armPot;
-	public static WPI_TalonSRX armTalon;
-		
-	double potRates;
-	double check;
+//	public static AnalogPotentiometer armPot;
+//	public static WPI_TalonSRX armTalon;
+//		
+//	double potRates;
+//	double check;
+//	
+//	public Arm() {
+//		armTalon = new WPI_TalonSRX(RobotMap.armTalon);
+//		armPot = new AnalogPotentiometer(1, 360, 0);		
+//	}
 	
-	public Arm() {
-		armTalon = new WPI_TalonSRX(RobotMap.armTalon);
-		armPot = new AnalogPotentiometer(1, 360, 0);		
-	}
-	
-	public double potRate() {
-		potRates = armPot.get();
-	
-		return potRates;
-	}
+//	public double potRate() {
+//		potRates = armPot.get();
+//	
+//		return potRates;
+//	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

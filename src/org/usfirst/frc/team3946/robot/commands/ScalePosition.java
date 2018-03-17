@@ -23,7 +23,7 @@ public class ScalePosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.armPID.scalePosition();
+    	Robot.robotArm.scalePosition();
 //	 	if(Robot.arm.potRate() > 136) {
 //    		Arm.armTalon.set(1);
 //    	} else {
@@ -33,12 +33,12 @@ public class ScalePosition extends Command {
     
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.armPID.getPIDController().onTarget();
+        return Robot.robotArm.getPIDController().onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Arm.armTalon.set(0);
+//    	Arm.armTalon.set(0);
     }
 
     // Called when another command which requires one or more of the same

@@ -5,6 +5,7 @@ import org.usfirst.frc.team3946.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
@@ -15,9 +16,10 @@ public class RobotArm extends PIDSubsystem {
 	final double switchPos = 317;
 	final double cubePos = 362.5;
 	final double scalePos = 136;
+	double potRates;
 	
 	WPI_TalonSRX armTalon = new WPI_TalonSRX(RobotMap.armTalon);
-	AnalogInput armPot = new AnalogInput(1);
+	AnalogPotentiometer armPot = new AnalogPotentiometer(2, 360, 0);
 	
     // Initialize your subsystem here
     public RobotArm() {				
@@ -39,11 +41,7 @@ public class RobotArm extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    	double averageVoltage;
-    	double actualVoltage;
-    	averageVoltage = armPot.getAverageVoltage();
-        actualVoltage = averageVoltage / 12;
-    	return actualVoltage;
+    	return 0;
     }
 
     protected void usePIDOutput(double output) {
@@ -70,4 +68,11 @@ public class RobotArm extends PIDSubsystem {
     public void armRest() {
     	armTalon.set(0);
     }
+    
+	public double potRate() {
+		potRates = armPot.get();
+		return potRates;
+}
+
+    
 }
