@@ -5,13 +5,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CubeIntoVault extends CommandGroup {
+public class CubePickup extends CommandGroup {
 
-    public CubeIntoVault() {
+    public CubePickup() {
         // Add Commands here:
-       addSequential(new ClosedIntakeArm());
-       addSequential(new ReadyIntakeArm()); //I don't know how the timing works with these...
-       addSequential(new CubeOut());
+       	addSequential(new CubePosition());
+    	addSequential(new Release());
+    	addSequential(new ReadyIntakeArm());
+    	addSequential(new ClosedIntakeArm());
+    	addSequential(new CubeIn());
+    	addSequential(new Grab());
+    	addSequential(new RestPosition());
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
 
         // To run multiple commands at the same time,
         // use addParallel()

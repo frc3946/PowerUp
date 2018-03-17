@@ -20,10 +20,12 @@ import org.usfirst.frc.team3946.robot.subsystems.Climb;
 import org.usfirst.frc.team3946.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team3946.robot.subsystems.Intake;
 import org.usfirst.frc.team3946.robot.subsystems.LED;
+import org.usfirst.frc.team3946.robot.subsystems.RobotArm;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -45,6 +47,7 @@ public class Robot extends TimedRobot {
 	public static final Arm arm = new Arm();
 	public static final Climb climb = new Climb();
 	public static final LED led = new LED();
+	public static final RobotArm armPID = new RobotArm();
 	
 	public static OI m_oi; 
 
@@ -59,10 +62,30 @@ public class Robot extends TimedRobot {
 	@Override				
 	public void robotInit() {	
 
+		Alliance team;
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		team = DriverStation.getInstance().getAlliance();
 		
 		m_autonomousCommand = new LeftSwitchAutonomous();
+		
+		if(team == DriverStation.Alliance.Blue) {
+			if(gameData.length() > 0) {
+				if(gameData.charAt(0) == 'L') {
+					m_autonomousCommand = new LeftSwitchAutonomous();
+				} else {
+					m_autonomousCommand = new RightSwitchAutonomous();
+				}
+			} 
+		} else if(team == DriverStation.Alliance.Red){
+			if(gameData.length() > 0) {
+				if(gameData.charAt(0) == 'R') {
+					m_autonomousCommand = new RightSwitchAutonomous();
+				} else {
+					m_autonomousCommand = new LeftSwitchAutonomous();
+				}
+			}
+		}
 		
 //		if(gameData.length() > 0) {
 //			if(gameData.charAt(0) == 'L') {
@@ -72,14 +95,14 @@ public class Robot extends TimedRobot {
 //			}
 //		}
 //	
-		if(gameData.length() > 0) {
-			if(gameData.charAt(1) == 'L') {
+//		if(gameData.length() > 0) {
+//			if(gameData.charAt(1) == 'L') {
 //				m_autonomousCommand = new LeftScaleAutonomous();
-			} else {
+//			} else {
 //				m_autonomousCommand = new RightScaleAutonomous();
-			}
+//			}
 			
-		}
+//		}
 		
 		 m_chooser.addDefault("Left Auto Switch", new LeftSwitchAutonomous());
 		 m_chooser.addObject("Right Auto Switch", new RightSwitchAutonomous());

@@ -5,14 +5,17 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class PickUpCube extends CommandGroup {
+public class SwitchCG extends CommandGroup {
 
-    public PickUpCube() {
+    public SwitchCG() {
         // Add Commands here:
-    	addSequential(new ClosedIntakeArm());
-        addSequential(new ReadyIntakeArm());
-    	addParallel(new CubeIn());
-    	addSequential(new Grab());
+    	addSequential(new SwitchPosition());
+    	addSequential(new Release());
+    	addSequential(new CubePosition());
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
+
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

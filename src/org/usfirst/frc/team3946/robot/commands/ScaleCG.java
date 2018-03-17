@@ -5,14 +5,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LeftSwitchAutonomous extends CommandGroup {
+public class ScaleCG extends CommandGroup {
 
-    public LeftSwitchAutonomous() {
+    public ScaleCG() {
         // Add Commands here:
-    	addSequential(new AutoStraight());
-    	addSequential(new SwitchPosition());
+    	addSequential(new ScalePosition());
     	addSequential(new Release());
-    	
+    	addSequential(new CubePosition());
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
