@@ -10,6 +10,7 @@ package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.Climber;
 import org.usfirst.frc.team3946.robot.commands.IntakeArmGrab;
+import org.usfirst.frc.team3946.robot.commands.IntakeArmOut;
 import org.usfirst.frc.team3946.robot.commands.CubeIn;
 import org.usfirst.frc.team3946.robot.commands.CubeOut;
 import org.usfirst.frc.team3946.robot.commands.CubePosition;
@@ -66,7 +67,7 @@ public class OI {
 
 	//Buttons on Manipulator's Joystick...
 	
-	Button climbJoy = new JoystickButton(manipulatorJoystick, 1);
+	Button armPrepJoy = new JoystickButton(manipulatorJoystick, 1);
 	Button cubePositionJoy = new JoystickButton(manipulatorJoystick, 2);
 	Button restPositionJoy = new JoystickButton(manipulatorJoystick, 3);
 	Button switchPositionJoy = new  JoystickButton(manipulatorJoystick, 4);
@@ -106,8 +107,8 @@ public class OI {
 		restPositionJoy.whenPressed(new RestPosition());
 		openClampJoy.whenPressed(new Grab());
 		closeClampJoy.whenPressed(new Release());
-		armOutJoy.whenPressed(new IntakeArmPrepPos());
+		armOutJoy.whenPressed(new IntakeArmOut());
 		armInJoy.whenPressed(new IntakeArmGrab());
-		
+		armPrepJoy.whenPressed(new IntakeArmPrepPos());
 	}
 }

@@ -48,11 +48,11 @@ public class RobotMap {
 	
 	
 	//Intake arm positions
-	public static final int RIGHT_OPEN_POSITION = 0;
-	public static final int LEFT_OPEN_POSITION = 0;
-	public static final int RIGHT_GRAB_POSITION = 0;
-	public static final int LEFT_GRAB_POSITION = 0;
-	public static final int RIGHT_PREP_POSITION = 0;
-	public static final int LEFT_PREP_POSITION = 0;
+	public static final int RIGHT_OPEN_POSITION = 180;
+	public static final int LEFT_OPEN_POSITION = -180;
+	public static final int RIGHT_GRAB_POSITION = 65;
+	public static final int LEFT_GRAB_POSITION = 80;
+	public static final int RIGHT_PREP_POSITION = 90;
+	public static final int LEFT_PREP_POSITION = 65;
 	
 	}
