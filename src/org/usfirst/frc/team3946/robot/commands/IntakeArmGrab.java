@@ -1,32 +1,28 @@
 package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
+import org.usfirst.frc.team3946.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ClosedIntakeArm extends Command {
+public class IntakeArmGrab extends Command {
 
-    public ClosedIntakeArm() {
+    public IntakeArmGrab() {
     	requires(Robot.intake);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
-    double startR = 0, startL = 1, endR = 150, endL = 30;
+    
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	Robot.intake.leftIntakeServo.setDisabled();
-//    	Robot.intake.rightIntakeServo.setAngle(startR);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.leftIntakeServo.setAngle(60);
-    	Robot.intake.rightIntakeServo.setAngle(120);
-//    	Robot.intake.rightIntakeServo.setSpeed(.5);
+    	Robot.intake.leftIntakeServo.setAngle(RobotMap.LEFT_GRAB_POSITION); //60	
+    	Robot.intake.rightIntakeServo.setAngle(RobotMap.RIGHT_GRAB_POSITION); //120 
     }
 
     // Make this return true when this Command no longer needs to run execute()

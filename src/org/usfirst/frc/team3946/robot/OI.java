@@ -9,13 +9,13 @@
 package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.Climber;
-import org.usfirst.frc.team3946.robot.commands.ClosedIntakeArm;
+import org.usfirst.frc.team3946.robot.commands.IntakeArmGrab;
 import org.usfirst.frc.team3946.robot.commands.CubeIn;
 import org.usfirst.frc.team3946.robot.commands.CubeOut;
 import org.usfirst.frc.team3946.robot.commands.CubePosition;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.Grab;
-import org.usfirst.frc.team3946.robot.commands.ReadyIntakeArm;
+import org.usfirst.frc.team3946.robot.commands.IntakeArmPrepPos;
 import org.usfirst.frc.team3946.robot.commands.Release;
 import org.usfirst.frc.team3946.robot.commands.RestPosition;
 import org.usfirst.frc.team3946.robot.commands.ScalePosition;
@@ -55,13 +55,13 @@ public class OI {
 	
 	Button openIntake = new JoystickButton(manipulatorController, 1);
 	Button closeIntake = new JoystickButton(manipulatorController, 2);
-//	Button switchPosition = new  JoystickButton(manipulatorController, 3);
+//	Button switchPosition = new  JoystickButton(manipulatorController, 1);
 	Button scalePosition = new JoystickButton(manipulatorController, 4);
 	Button cubeIn = new JoystickButton(manipulatorController, 5);
 	Button cubeOut = new JoystickButton(manipulatorController, 6);
 //	Button openClamp = new JoystickButton(manipulatorController, 7);
 	Button closeClamp = new JoystickButton(manipulatorController, 8);
-	Button cubePosition = new JoystickButton(manipulatorController, 3);
+//	Button cubePosition = new JoystickButton(manipulatorController, 2);
 	Button restPosition = new JoystickButton(manipulatorController, 7);
 
 	//Buttons on Manipulator's Joystick...
@@ -89,14 +89,14 @@ public class OI {
 		normalTank.whenPressed(new TankDrive());
 		cubeOut.whileHeld(new CubeOut());
 		cubeIn.whileHeld(new CubeIn());	
-		cubePosition.whenPressed(new CubePosition());
+//		cubePosition.whenPressed(new CubePosition());
 //		switchPosition.whenPressed(new SwitchPosition());
 		scalePosition.whenPressed(new ScalePosition());
 		restPosition.whenPressed(new RestPosition());
 //		openClamp.whenPressed(new Grab());
 		closeClamp.whenPressed(new Release());
-		openIntake.whenPressed(new ReadyIntakeArm());
-		closeIntake.whenPressed(new ClosedIntakeArm());
+		openIntake.whenPressed(new IntakeArmPrepPos());
+		closeIntake.whenPressed(new IntakeArmGrab());
 		
 		cubeOutJoy.whileHeld(new CubeOut());
 		cubeInJoy.whileHeld(new CubeIn());	
@@ -106,8 +106,8 @@ public class OI {
 		restPositionJoy.whenPressed(new RestPosition());
 		openClampJoy.whenPressed(new Grab());
 		closeClampJoy.whenPressed(new Release());
-		armOutJoy.whenPressed(new ReadyIntakeArm());
-		armInJoy.whenPressed(new ClosedIntakeArm());
+		armOutJoy.whenPressed(new IntakeArmPrepPos());
+		armInJoy.whenPressed(new IntakeArmGrab());
 		
 	}
 }

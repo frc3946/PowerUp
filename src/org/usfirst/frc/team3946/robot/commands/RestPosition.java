@@ -2,6 +2,7 @@ package org.usfirst.frc.team3946.robot.commands;
 
 import org.usfirst.frc.team3946.robot.Robot;
 import org.usfirst.frc.team3946.robot.subsystems.Arm;
+import org.usfirst.frc.team3946.robot.subsystems.RobotArm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -22,6 +23,7 @@ public class RestPosition extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	RobotArm.armTalon.set(0);
 //    	if(Robot.arm.potRate() > 0) {
 //    		Arm.armTalon.set(.54);
 //    	} else {   

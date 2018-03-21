@@ -25,12 +25,14 @@ public class CubePosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    RobotArm.armTalon.set(Robot.m_oi.manipulatorController.getY(GenericHID.Hand.kLeft));
+    	if(Robot.robotArm.analogPos() < 500) {
+    		RobotArm.armTalon.set(.4);
+       	}
     	
-//    Robot.robotArm.cubePosition();
-//    	if(Robot.arm.potRate() < 362.5) {
-//    		Arm.armTalon.set(-0.4);
-//    	}
+    	if(Robot.robotArm.analogPos() > 500) {
+    		RobotArm.armTalon.set(.4);
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

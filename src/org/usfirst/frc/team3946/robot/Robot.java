@@ -9,7 +9,7 @@ package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.JoystickTankDrive;
 import org.usfirst.frc.team3946.robot.commands.LeftSwitchAutonomous;
-import org.usfirst.frc.team3946.robot.commands.ReadyIntakeArm;
+import org.usfirst.frc.team3946.robot.commands.IntakeArmPrepPos;
 import org.usfirst.frc.team3946.robot.commands.RightSwitchAutonomous;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
@@ -86,23 +86,6 @@ public class Robot extends TimedRobot {
 				}
 			}
 		}
-		
-//		if(gameData.length() > 0) {
-//			if(gameData.charAt(0) == 'L') {
-//				m_autonomousCommand = new LeftSwitchAutonomous();
-//			} else {
-//				m_autonomousCommand = new RightSwitchAutonomous();
-//			}
-//		}
-//	
-//		if(gameData.length() > 0) {
-//			if(gameData.charAt(1) == 'L') {
-//				m_autonomousCommand = new LeftScaleAutonomous();
-//			} else {
-//				m_autonomousCommand = new RightScaleAutonomous();
-//			}
-			
-//		}
 		
 		 m_chooser.addDefault("Left Auto Switch", new LeftSwitchAutonomous());
 		 m_chooser.addObject("Right Auto Switch", new RightSwitchAutonomous());
@@ -200,17 +183,16 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-				
-		Scheduler.getInstance().run();
 		
-		SmartDashboard.putNumber("Arm Potentiometer", robotArm.potRate());
-//		SmartDashboard.putNumber("Climb Encoder Rate", climb.climbRate());
+		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Arm Position", robotArm.analogPos());
+		SmartDashboard.putNumber("Arm Velocity", robotArm.analogVel());
 		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
 		SmartDashboard.getNumber("Robot Speed", drivetrain.getSpeed());
-//		SmartDashboard.putNumber("Left Intake Servo", Robot.intake.leftIntakeServo.get());
-//		SmartDashboard.putNumber("Right Intake Servo", Robot.intake.rightServoAngle());
-//		SmartDashboard.updateValues();
+		SmartDashboard.putNumber("Left Intake Servo", Robot.intake.leftIntakeServo.get());
+		SmartDashboard.putNumber("Right Intake Servo", Robot.intake.rightIntakeServo.get());
+		SmartDashboard.updateValues();
 
 	}
 

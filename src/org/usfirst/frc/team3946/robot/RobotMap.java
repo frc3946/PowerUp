@@ -45,4 +45,14 @@ public class RobotMap {
 	//Climb
 	public static int climbEncoder = 1;
 	public static int climbTalon = 7;
+	
+	
+	//Intake arm positions
+	public static final int RIGHT_OPEN_POSITION = 0;
+	public static final int LEFT_OPEN_POSITION = 0;
+	public static final int RIGHT_GRAB_POSITION = 0;
+	public static final int LEFT_GRAB_POSITION = 0;
+	public static final int RIGHT_PREP_POSITION = 0;
+	public static final int LEFT_PREP_POSITION = 0;
+	
 	}

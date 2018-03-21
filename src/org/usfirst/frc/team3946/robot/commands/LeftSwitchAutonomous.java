@@ -10,7 +10,7 @@ public class LeftSwitchAutonomous extends CommandGroup {
     public LeftSwitchAutonomous() {
         // Add Commands here:
     	addSequential(new AutoStraight());
-    	addSequential(new SwitchPosition());
+    	addSequential(new CubePosition());
     	addSequential(new Release());
     	
         // e.g. addSequential(new Command1());

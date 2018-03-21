@@ -14,10 +14,13 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class RobotArm extends PIDSubsystem {
 
-	final double switchPos = 317;
-	final double cubePos = 362.5;
-	final double scalePos = 136;
-	double potRates;
+	final double switchPos = 10; //574
+	final double cubePos = 25; //811
+	final double scalePos = 50; //154
+	double analogPosition;
+	double analogVelocity;
+	int selectedSensorPos = armTalon.getSelectedSensorPosition(0);
+	int selectedSensorVel = armTalon.getSelectedSensorVelocity(0);
 	
 	public static WPI_TalonSRX armTalon = new WPI_TalonSRX(RobotMap.armTalon);
 //	AnalogPotentiometer armPot = new AnalogPotentiometer(1, 360, 0);
@@ -33,6 +36,8 @@ public class RobotArm extends PIDSubsystem {
         // enable() - Enables the PID controller.
     	armTalon.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0);
     	armTalon.setSensorPhase(true);
+    	armTalon.configOpenloopRamp(0.5, 0);
+    	armTalon.configClosedloopRamp(0, 0);
     }
 
     public void initDefaultCommand() {
@@ -53,34 +58,16 @@ public class RobotArm extends PIDSubsystem {
     	armTalon.pidWrite(output);
     }
     
-    public void switchPosition() {
-    	setSetpoint(switchPos);
-    	enable();
-    }
-    
-    public void scalePosition() {
-    	setSetpoint(scalePos);
-    	enable();
-    }
-    
-    public void cubePosition() {
-    	setSetpoint(cubePos);
-    	enable();
-    }
-    
-    public void armRest() {
-    	armTalon.set(0);
-    }
-    
-    public void setSpeed(double speed) {
-    	armTalon.set(speed);
-    }
-    
-	public double potRate() {
-		potRates = 0;
-		return potRates;
+	public double analogPos() {
+		analogPosition = armTalon.getSensorCollection().getAnalogIn();
+		return analogPosition;
 	}
 
-	
+	public double analogVel() {
+		analogVelocity = armTalon.getSensorCollection().getAnalogInVel();
+		return analogVelocity;
+	}
     
+	
+	
 }
