@@ -27,7 +27,7 @@ public class Claw extends Subsystem {
 //	}
 	
     public void initDefaultCommand() {
-    	clawSolenoid.set(on);
+    	clawSolenoid.set(off);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }

@@ -2,6 +2,7 @@ package org.usfirst.frc.team3946.robot.subsystems;
 
 import org.usfirst.frc.team3946.robot.Robot;
 import org.usfirst.frc.team3946.robot.RobotMap;
+import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -74,16 +75,16 @@ public class DriveTrain extends Subsystem {
 		frontLeft.setInverted(false);
 		frontRight.setInverted(false);
 		
-		forward = -(Robot.m_oi.driverController.getY(GenericHID.Hand.kLeft));
+		forward = (Robot.m_oi.driverController.getY(GenericHID.Hand.kLeft));
 		turn = Robot.m_oi.driverController.getX(GenericHID.Hand.kRight);
 		
-		robotDrive.arcadeDrive(forward, turn);
+		robotDrive.arcadeDrive(-forward, -turn);
 		
 	}
 	
     public void initDefaultCommand() {
 
-    	setDefaultCommand(new TankDrive()); 
+    	setDefaultCommand(new DoubleJoyArcade()); 
    
     } 
  
@@ -113,6 +114,31 @@ public class DriveTrain extends Subsystem {
 		rightSpeed = DriveTrain.frontRight.getSelectedSensorVelocity(0);
 		actualSpeed = (leftSpeed + rightSpeed) / 2;	
 		return actualSpeed;
+    }
+    
+    public double currentfrontLeftOut() {
+    	double lfCurrent;
+    	lfCurrent = frontLeft.getOutputCurrent();
+    	return lfCurrent;
+    }
+    
+    public double currentfrontRightOut() {
+    	double lrCurrent;
+    	lrCurrent = frontRight.getOutputCurrent();
+    	return lrCurrent;
+    }
+    
+    
+    public double currentBackRightOut() {
+    	double brCurrent;
+    	brCurrent = backRight.getOutputCurrent();
+    	return brCurrent;
+    }
+    
+    public double currentBackLeftOut() {
+    	double blCurrent;
+    	blCurrent = backLeft.getOutputCurrent();
+    	return blCurrent;
     }
     
 }

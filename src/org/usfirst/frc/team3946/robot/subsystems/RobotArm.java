@@ -1,6 +1,8 @@
 package org.usfirst.frc.team3946.robot.subsystems;
 
 import org.usfirst.frc.team3946.robot.RobotMap;
+import org.usfirst.frc.team3946.robot.commands.ArmCubePos;
+import org.usfirst.frc.team3946.robot.commands.ArmMotorOff;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -27,9 +29,10 @@ public class RobotArm extends PIDSubsystem {
 	
     // Initialize your subsystem here
     public RobotArm() {				
-    	super("RobotArm", 2.0, 0, 0);
+    	super("RobotArm", 0, 0, 0);
     	setAbsoluteTolerance(0.05);
-    	getPIDController().setContinuous(false);
+    	setInputRange(0, 650);
+    	getPIDController().setContinuous(true);
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
@@ -41,15 +44,15 @@ public class RobotArm extends PIDSubsystem {
     }
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new ArmMotorOff());
     }
 
     protected double returnPIDInput() {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
-        // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    	return 0;
+    	// yourPot.getAverageVoltage() / kYourMaxVoltage;
+    	double potRate = armTalon.getSensorCollection().getAnalogIn();
+    	return potRate;
     }
 
     protected void usePIDOutput(double output) {
@@ -67,7 +70,5 @@ public class RobotArm extends PIDSubsystem {
 		analogVelocity = armTalon.getSensorCollection().getAnalogInVel();
 		return analogVelocity;
 	}
-    
-	
 	
 }

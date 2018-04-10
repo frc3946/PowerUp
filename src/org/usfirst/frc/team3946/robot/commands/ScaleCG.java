@@ -9,9 +9,9 @@ public class ScaleCG extends CommandGroup {
 
     public ScaleCG() {
         // Add Commands here:
-    	addSequential(new ScalePosition());
-    	addSequential(new Release());
-    	addSequential(new CubePosition());
+    	addSequential(new ArmScalePos());
+    	addSequential(new ClawOpen());
+    	addSequential(new ArmCubePos());
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

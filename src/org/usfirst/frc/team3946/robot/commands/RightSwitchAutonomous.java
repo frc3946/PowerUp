@@ -9,14 +9,9 @@ public class RightSwitchAutonomous extends CommandGroup {
 
     public RightSwitchAutonomous() {
         // Add Commands here:
-    	addSequential(new AutoRightTurn());
     	addSequential(new AutoStraight());
-    	addSequential(new AutoLeftTurn());
-    	addSequential(new AutoStraight());
-    	addSequential(new AutoLeftTurn());
-//    	addSequential(new SwitchPosition());
-//    	setTimeout(1);
-//    	addSequential(new Release());
+    	addSequential(new ArmCubePos());
+    	addSequential(new ClawOpen());
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

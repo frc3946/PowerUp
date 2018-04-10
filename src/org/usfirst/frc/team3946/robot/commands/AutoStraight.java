@@ -19,32 +19,26 @@ public class AutoStraight extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(6);
+    	setTimeout(5);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	this.went = Robot.drivetrain.leftEncRate();
+//    	this.went = Robot.drivetrain.leftEncRate();
     			
 //    	if (this.went < 275) {
-    		Robot.drivetrain.autoDrive(0.4, 0.4);
+    		Robot.drivetrain.autoDrive(-0.6, -0.65);
 //    	}
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return this.went > 275 || isTimedOut();
+        return isTimedOut();
     }
     
     // Called once after isFinished returns true
     protected void end() {
     	Robot.drivetrain.autoDrive(0, 0);
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
     }
 }

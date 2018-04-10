@@ -9,9 +9,9 @@ package org.usfirst.frc.team3946.robot;
 
 import org.usfirst.frc.team3946.robot.commands.JoystickTankDrive;
 import org.usfirst.frc.team3946.robot.commands.LeftSwitchAutonomous;
-import org.usfirst.frc.team3946.robot.commands.IntakeArmPrepPos;
 import org.usfirst.frc.team3946.robot.commands.RightSwitchAutonomous;
 import org.usfirst.frc.team3946.robot.commands.SingleJoyArcade;
+import org.usfirst.frc.team3946.robot.commands.AutoStraight;
 import org.usfirst.frc.team3946.robot.commands.DoubleJoyArcade;
 import org.usfirst.frc.team3946.robot.commands.TankDrive;
 import org.usfirst.frc.team3946.robot.subsystems.Arm;
@@ -62,30 +62,30 @@ public class Robot extends TimedRobot {
 	@Override				
 	public void robotInit() {	
 
+		m_autonomousCommand = new AutoStraight();
+		
 		Alliance team;
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		team = DriverStation.getInstance().getAlliance();
 		
-		m_autonomousCommand = new LeftSwitchAutonomous();
-		
-		if(team == DriverStation.Alliance.Blue) {
-			if(gameData.length() > 0) {
-				if(gameData.charAt(0) == 'L') {
-					m_autonomousCommand = new LeftSwitchAutonomous();
-				} else {
-					m_autonomousCommand = new RightSwitchAutonomous();
-				}
-			} 
-		} else if(team == DriverStation.Alliance.Red){
-			if(gameData.length() > 0) {
-				if(gameData.charAt(0) == 'R') {
-					m_autonomousCommand = new RightSwitchAutonomous();
-				} else {
-					m_autonomousCommand = new LeftSwitchAutonomous();
-				}
-			}
-		}
+//		if(team == DriverStation.Alliance.Blue) {
+//			if(gameData.length() > 0) {
+//				if(gameData.charAt(0) == 'L') {
+//					m_autonomousCommand = new LeftSwitchAutonomous();
+//				} else {
+//					m_autonomousCommand = new AutoStraight();
+//				}
+//			} 
+//		} else if(team == DriverStation.Alliance.Red){
+//			if(gameData.length() > 0) {
+//				if(gameData.charAt(0) == 'R') {
+//					m_autonomousCommand = new AutoStraight();
+//				} else {
+//					m_autonomousCommand = new LeftSwitchAutonomous();
+//				}
+//			}
+//		}
 		
 		 m_chooser.addDefault("Left Auto Switch", new LeftSwitchAutonomous());
 		 m_chooser.addObject("Right Auto Switch", new RightSwitchAutonomous());
@@ -147,8 +147,8 @@ public class Robot extends TimedRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-		
-		m_autonomousCommand = new LeftSwitchAutonomous();
+			
+		m_autonomousCommand = new AutoStraight();
 		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -185,8 +185,12 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Front Left Motor Output", drivetrain.currentfrontLeftOut());
+		SmartDashboard.putNumber("Front Right Motor Output", drivetrain.currentfrontRightOut());
+		SmartDashboard.putNumber("Back Left Motor Output", drivetrain.currentBackLeftOut());
+		SmartDashboard.putNumber("Back Right Motor Output", drivetrain.currentBackRightOut());
 		SmartDashboard.putNumber("Arm Position", robotArm.analogPos());
-		SmartDashboard.putNumber("Arm Velocity", robotArm.analogVel());
+//		SmartDashboard.putNumber("Arm Velocity", robotArm.analogVel());
 		SmartDashboard.getNumber("Left Encoder Rate", drivetrain.leftEncRate());
 		SmartDashboard.getNumber("Right Encoder Rate", drivetrain.rightEncRate());
 		SmartDashboard.getNumber("Robot Speed", drivetrain.getSpeed());

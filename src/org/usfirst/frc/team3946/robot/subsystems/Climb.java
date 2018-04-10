@@ -2,7 +2,7 @@ package org.usfirst.frc.team3946.robot.subsystems;
 
 import org.usfirst.frc.team3946.robot.Robot;
 import org.usfirst.frc.team3946.robot.RobotMap;
-import org.usfirst.frc.team3946.robot.commands.Climber;
+import org.usfirst.frc.team3946.robot.commands.ClimberExtend;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;

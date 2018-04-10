@@ -5,13 +5,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class SwitchCG extends CommandGroup {
+public class CubeToSwitchCG extends CommandGroup {
 
-    public SwitchCG() {
+    public CubeToSwitchCG() {
         // Add Commands here:
     	addSequential(new ArmSwitchPos());
     	addSequential(new ClawOpen());
-    	addSequential(new ArmCubePos());
+    	addSequential(new ArmMotorOff());
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

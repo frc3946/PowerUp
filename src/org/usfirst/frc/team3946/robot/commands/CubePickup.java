@@ -9,13 +9,13 @@ public class CubePickup extends CommandGroup {
 
     public CubePickup() {
         // Add Commands here:
-       	addSequential(new CubePosition());
-    	addSequential(new Release());
-    	addSequential(new IntakeArmPrepPos());
-    	addSequential(new IntakeArmGrab());
-    	addSequential(new CubeIn());
-    	addSequential(new Grab());
-    	addSequential(new RestPosition());
+       	addSequential(new ArmCubePos());
+    	addSequential(new ClawOpen());
+//    	addSequential(new IntakeArmPrepPos());
+//    	addSequential(new IntakeArmGrab());
+    	addSequential(new CubeIntakeWheelIn());
+    	addSequential(new ClawClose());
+    	addSequential(new ArmMotorOff());
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
